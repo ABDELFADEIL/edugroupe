@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <Link href="../css/style.css" rel="stylesheet" />
+    <title>ViaAduc</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="icon">
+            <a href="./index.html">
+                <img src="../img/viaaduc_icon.jpeg" alt="ViaAduc icon">
+            </a>
+        </div>
+        <nav class="nav">
+            <p><a href="./profile.html">Espace client</a></p>
+            <p><a href="./produits.html">Produits</a></p>
+            <p><a href="./admin.html">Administration</a></p>
+        </nav>
+        <div class="icon-log">
+            <i id="logIcon" class="fa " onclick="logout()"></i>
+        </div>
+    </header>
+    <main class="container">
+        <div class="signup box" id="box">
+            <form class="form" id="signup">
+                <h2>Créer un compte</h2>
+                <div class="row50">
+                    <div class="inputBox">
+                        <input type="text" name="nom" required="required">
+                        <span>Nom</span>
+                        <i></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" name="prenom" required="required">
+                        <span>Prénom</span>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="row50">
+                    <div class="inputBox">
+                        <input type="date" name="dateNaissance" required="required">
+                        <span>Date de naissance</span>
+                        <i></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" name="email" required="required">
+                        <span>Email</span>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="row50">
+                    <div class="inputBox">
+                        <input type="password" name="password" required="required">
+                        <span>Mot de passe</span>
+                        <i></i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" name="rePassword" required="required">
+                        <span>Confirmer mot de passe</span>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="row50">
+                    <div class="inputBox">
+                        <input type="text" name="adresse" required="required">
+                        <span>Adresse postale</span>
+                        <i></i>
+                    </div>
+                </div>
+
+                <div class="links">
+                    <a href="./login.html">Vous avez un compte ? connectez vous</a>
+                </div>
+                <input type="submit" value="Envoyer" onclick="signup(event)">
+            </form>
+            <div id="registred">
+                <p>Vous compte a été créé!</p>
+                <a href="./login.html">Connectez vous</a>
+            </div>
+        </div>
+    </main>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

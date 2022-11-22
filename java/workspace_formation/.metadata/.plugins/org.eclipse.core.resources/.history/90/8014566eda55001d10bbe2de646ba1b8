@@ -1,0 +1,39 @@
+package tableauxUneDim;
+
+public class Tp3 {
+
+	public static void main(String[] args) {
+		
+		int [][] tableauEntier = {
+									{3,4,6,11},
+									{2,21,7,9},
+									{1,5,-12,3}
+								  };
+		
+		System.out.println("Tous Positif ? " + tousPositif(tableauEntier));
+	}
+	/**
+	 * 
+	 * @param tabEnt
+	 * @return
+	 */
+	public static boolean tousPositif(int[][] tabEnt) {
+		boolean positif = true;
+		
+		int i =0;
+		
+		while(i<tabEnt.length && positif) {
+			int j=0;	
+			while(j<tabEnt[i].length && positif) {
+				
+				if (tabEnt[i][j]<0)
+					positif = false;
+				
+			  j++;		
+			}
+			i++;
+		}		
+		return positif;
+	}
+
+}

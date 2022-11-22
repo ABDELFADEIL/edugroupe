@@ -1,0 +1,31 @@
+spring:
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/gescom?serverTimezone=UTC
+    username: root
+    password: rootroot
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: '@project.name@'
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        generate-statistics: false
+        enable_lazy_load_no_trans: true
+    show-sql: true
+#security:
+ # basic:
+  #  enabled: false
+server:
+  servlet:
+    context-path: /api
+
+rsa:
+  private-key: classpath:certs/private.pem
+  public-key: classpath:certs/public.pem

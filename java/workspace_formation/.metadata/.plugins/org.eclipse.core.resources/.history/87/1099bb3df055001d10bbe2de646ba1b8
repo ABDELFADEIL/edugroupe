@@ -1,0 +1,62 @@
+package tableauxUneDim;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
+
+public class Listes {
+
+		public static void main(String[] args) {
+			//1-	Déclaration des liste
+			ArrayList<String> langages = new ArrayList<>();
+				/*
+				 * List<String> languages = new ArrayList<>(); List<Integer> maliste = new
+				 * LinkedList<>();
+				 */
+			//2-	Ajout d'un élément	
+				langages.add("Java 8");
+				langages.add("SQL ");
+				langages.add("HTML5 && CSS3");
+				
+					//2-1	Taille de la liste size();
+						System.out.println("nombre éléments de la liste = " + langages.size());
+					//2-2	Accès à un élément de la liste
+						System.out.println("nombre éléments de la liste = " + langages.get(1));
+				
+			//3-	Parcours de la liste
+					for(int i = 0; i<langages.size();i++) {
+						System.out.println("elt : " + langages.get(i));
+					}
+						
+					for(String val : langages) {
+						System.out.println("elt : " + val);
+					}
+				
+					//langages.forEach(null)
+			//4-	Supprimer un  élément   ()  remove(index)
+					langages.remove(1);
+					
+					System.out.println("Liste : " + langages.toString());
+					
+				
+			//4		rechercher un élément 
+					System.out.println("existe ? : " +  langages.contains("Java 8"));
+					
+					System.out.println("Index : " +  langages.indexOf("Java 8"));
+				
+			//5-	initialiser une liste avec les valaurs (déclaration + initialisation)
+					
+					List<Integer> maListe = Arrays.asList(1,2,3,4,5,6,7,8,9);
+			
+			//6-	triér les éléments de la liste
+				
+			//7-	modifier un élément d'une liste
+				
+			//
+				
+
+		}
+}

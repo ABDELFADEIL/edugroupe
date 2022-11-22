@@ -1,0 +1,63 @@
+package tableauxUneDim;
+
+public class Tp1 {
+
+	public static void main(String[] args) {
+	
+		int [] tableauEntiers = {1,2,3,4,5,6,7,8,9,0};
+		
+		System.out.println("Somme = " + somme(tableauEntiers));
+		System.out.println("Max  = " + max(tableauEntiers));
+		System.out.println("Ordonne ?   " + isOrdonne(tableauEntiers));
+
+	}
+	/**
+	 * 
+	 * @param tabEnt
+	 * @return
+	 */
+	public static int somme(int [] tabEnt) {
+		
+		int somme =0;
+				
+			for(int i=0;i<tabEnt.length;i++) {
+				somme += tabEnt[i];
+			}
+		return somme;
+	}
+	/**
+	 * 
+	 * @param tabEnt
+	 * @return
+	 */
+	public static int  max(int[] tabEnt) {
+	
+	int max = tabEnt[0];
+		
+		for(int i=1;i<tabEnt.length;i++) {
+			if(tabEnt[i]>=max) {
+				max = tabEnt[i];
+			}
+		}
+		return max;
+	}
+	/**
+	 * 
+	 * @param tabEnt
+	 * @return
+	 */
+	public static boolean isOrdonne(int [] tabEnt) {
+		boolean ordonne = true;
+		int i =0;
+		while(i<tabEnt.length-1 && ordonne) {
+			
+			if(tabEnt[i]>tabEnt[i+1] ) {
+				ordonne = false;
+			}
+			i++;
+		}	
+		return ordonne;
+		
+	}
+
+}

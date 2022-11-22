@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <Link href="../css/style.css" rel="stylesheet"/>
+    <title>ViaAduc</title>
+</head>
+<body>
+    <header class="header">
+        <div class="icon">
+            <a href="./index.html">
+                <img src="../img/viaaduc_icon.jpeg" alt="ViaAduc icon">
+            </a>
+        </div>
+        <nav class="nav">
+            <p><a href="./profile.html">Espace client</a></p>
+            <p><a href="./produits.html">Produits</a></p>
+            <p><a href="./admin.html">Administration</a></p>
+        </nav>
+        <div class="icon-log">
+            <i id="logIcon" class="fa " onclick="logout()"></i>
+        </div>
+    </header>
+    <main class="profile" id="profile">
+        <div class="aside">
+            <div class="row">
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                <p>Mes informations</p>
+            </div>
+            <div class="row">
+                <i class="fa fa-list"></i>
+                <p>Mes commandes</p>
+            </div>            
+         </div>
+        <section id="profile-card">
+            <div class="profile-info">
+                <p>Nom: <span id="nom"></span></p>
+                <p>Prénom: <span id="prenom"></span></p>
+                <p>Date de naissance: <span id="dateNaissance"></span></p>
+                <div>
+                    <p>Email: <span id="email"></span>
+                        <a onclick="updateEmail()">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+                    </p>
+                </div>
+                <div class="inputBoxUpdate" id="updateEmail">
+                    <input id="emailInput" type="text" name="email" required="required">
+                    <span onclick="sendUpdateEmail()">Envoyer</span>
+                </div>
+                <div>
+                    <p>Adresse: <span id="adresse"></span>
+                        <a onclick="updateAddress()">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+                    </p>
+                </div>
+                <div class="inputBoxUpdate" id="updateAddress">
+                    <input id="addressInput" type="text" name="adresse" required="required">
+                    <span onclick="sendUpdateAddress()">Envoyer</span>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="../js/script.js"></script> 
+    <script src="../js/profile.js"></script> 
+</body>
+</html>

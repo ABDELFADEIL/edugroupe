@@ -1,0 +1,121 @@
+
+
+body {
+    margin: 0;
+    padding: 0;
+    min-width: 340px;
+}
+
+.parent {
+    background-color: red;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.parent div {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: #eee;
+    width: calc((100% - 60px) / 5);
+    float: left;
+    margin-left: 10px;
+}
+
+.clear {
+    clear: both;
+}
+
+.position {}
+
+.position div {
+    width: 100px;
+    color: white;
+    padding: 10px;
+}
+
+.one {
+    background-color: red;
+    position: absolute;
+}
+
+.tow {
+    background-color: green;
+}
+
+.parent1 {
+    background-color: yellow;
+    width: 500px;
+    height: 300px;
+    position: relative;
+
+}
+
+.main {
+    background-color: antiquewhite;
+    min-height: 100vh;
+    display: grid;
+    /* grid-template-columns: repeat(12, 1fr); */
+    /* grid-template-rows: repeat(12, 1fr); */
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 60px 10fr 60px; /* 1fr 10fr 1fr;*/
+    grid-template-areas: 
+    "header header header header"
+    "con con con aside"
+    "footer footer footer footer";
+}
+
+.header {
+    /* grid-column: span 12;
+    grid-row: span 1; */
+    /* grid-area: 1 / 1 / 2 / 13; */
+    grid-area: header;
+    background-color: aqua;
+
+}
+
+.container {
+    /* grid-column: span 8;
+    grid-row: span 10; */
+    /* grid-area: 2 / 1 / 12 / 9; */
+    /* grid-area: auto;
+    grid-column-start: 1;
+    grid-column-end: 9; */
+    grid-area: con;
+    background-color: beige;
+}
+
+.aside {
+    /* grid-column: span 4;
+    grid-row: span 10; */
+    /* grid-area: 2 / 9 / 12 / 13; */
+    /* grid-area: auto;
+    grid-column-start: 9;
+    grid-column-end: 13; */
+    grid-area: aside;
+    background-color: bisque;
+
+}
+
+.footer {
+    /* grid-column: span 12;
+    grid-row: span 1; */
+    /* grid-area: 12 / 1 / 13 / 13;*/
+    grid-area: footer;
+    background-color: blanchedalmond;
+} 
+
+@media screen and (max-width: 700px) {
+    .main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 60px 8fr 2fr 60px;
+        grid-template-areas: 
+    "header"
+    "con" 
+    "aside"
+    "footer";
+    }
+
+}

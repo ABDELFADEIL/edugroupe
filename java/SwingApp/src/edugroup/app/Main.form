@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="edugroup.app.Main">
+  <grid id="27dc6" binding="MainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="0" y="1" width="500" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-1"/>
+      <minimumSize width="500" height="400"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="daddb" class="javax.swing.JLabel">
+        <constraints border-constraint="West"/>
+        <properties>
+          <text value="Label 1"/>
+        </properties>
+      </component>
+      <component id="34688" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <foreground color="-12928406"/>
+        </properties>
+      </component>
+      <component id="97612" class="javax.swing.JButton" binding="button1" default-binding="true">
+        <constraints border-constraint="East"/>
+        <properties>
+          <foreground color="-13518020"/>
+          <text value="Button"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

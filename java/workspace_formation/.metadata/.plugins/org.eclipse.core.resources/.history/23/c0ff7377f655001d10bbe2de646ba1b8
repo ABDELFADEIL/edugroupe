@@ -1,0 +1,40 @@
+package tableauxUneDim;
+
+public class Personne {
+	//1	Attributs
+	private int id;
+	private String nom;
+	private String prenom;
+	private String email;
+	//2-	Constructeurs
+	public Personne() {
+		
+	}
+	public Personne(int idPers) {
+		this.id = idPers;
+	}
+	public Personne(int idPers,String nomPers) {
+		this.id = idPers;
+		this.nom =nomPers;
+	}
+
+	//3-	Getteurs ou accesseurs
+	public int getId() {
+		return this.id;
+	}
+	public String getNom() {
+		return this.nom;
+	}
+	//4-	Setteurs
+	public void setId(int idP) {
+		if(idP > 0)
+			this.id = idP;
+	}
+	public void setNom(String nomP) {
+		this.nom = nomP;
+	}
+	//4-	toStrin();
+	public String toString() {
+		return "Personne : { " + this.id + ","  + this.nom +", "+ this.prenom+ ", "+ this.email +"}";
+	}
+}

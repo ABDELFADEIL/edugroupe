@@ -1,0 +1,11 @@
+package tableauxUneDim;
+
+public class Etudiant extends Personne{
+	
+	private double moyenne;
+	
+	public void etudier() {
+		
+	}
+
+}

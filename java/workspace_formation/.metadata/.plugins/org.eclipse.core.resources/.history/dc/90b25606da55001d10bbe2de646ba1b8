@@ -1,0 +1,30 @@
+package tableauxUneDim;
+
+public class Tp3 {
+
+	public static void main(String[] args) {
+		
+
+	}
+	/**
+	 * 
+	 * @param tabEnt
+	 * @return
+	 */
+	public static boolean tousPositif(int[][] tabEnt) {
+		boolean positif = true;
+		
+		int i =0;
+		
+		while(i<tabEnt.length && positif) {
+			int j=0;	
+			while(j<tabEnt[i].length && positif) {
+				
+			}
+		}
+		
+		
+		return positif;
+	}
+
+}

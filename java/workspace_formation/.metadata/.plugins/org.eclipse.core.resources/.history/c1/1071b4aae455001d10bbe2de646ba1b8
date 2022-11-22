@@ -1,0 +1,36 @@
+package tableauxUneDim;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+public class Listes {
+
+		public static void main(String[] args) {
+			//1-	Déclaration des liste
+			
+			ArrayList<String> langages = new ArrayList<>();
+				
+				/*
+				 * List<String> languages = new ArrayList<>(); List<Integer> maliste = new
+				 * LinkedList<>();
+				 */
+			//2-	Ajout d'un élément	
+				langages.add("Java 8");
+				langages.add("SQL ");
+				langages.add("HTML5 && CSS3");
+			//3-	Parcours de la liste
+				
+			//4-	Supprimer un  élément
+				
+			//4		rechercher un élément 
+				
+			//5-	initialiser une liste avec les valaurs (déclaration + initialisation)
+			
+			//6-	triér les éléments de la liste
+				
+			//7-	modifier un élément d'une liste
+				
+			//8-	initialiser une liste à partir d'un tableau
+		}
+}

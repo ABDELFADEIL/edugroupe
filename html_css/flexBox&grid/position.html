@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exo position</title>
+</head>
+<body>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            float: left;
+        }
+        .container {
+            background-color: rgb(100, 87, 71);
+            width: 600px;
+            height: 600px;
+            margin: 200px;
+            position: relative;
+            
+        }
+        .container div {
+            display: inline-block;
+            background-color: rgb(145, 84, 9);
+            border: 1px solid #f8f8f8;
+            width: 20%;
+            height: 100px;
+            text-align: center;
+            
+        }
+
+        .container div:nth-of-type(2), 
+        .container div:nth-of-type(4){
+            transform: translateY(100%);
+
+        }
+
+        .container div:nth-of-type(6)
+        {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .container div:nth-of-type(7)
+        {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+    </style>
+    <div class="container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+    </div>
+    
+</body>
+</html>

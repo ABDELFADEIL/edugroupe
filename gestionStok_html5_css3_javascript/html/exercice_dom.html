@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <Link href="../css/style.css" rel="stylesheet"/>
+    <Link href="../css/style_calc.css" rel="stylesheet"/>
+
+    <title>ViaAduc</title>
+</head>
+<body>
+    <header class="header">
+        <div class="icon">
+            <a href="./index.html">
+                <img src="../img/viaaduc_icon.jpeg" alt="ViaAduc icon">
+            </a>
+        </div>
+        <nav class="nav">
+            <p><a href="./profile.html">Espace client</a></p>
+            <p><a href="./produits.html">Produits</a></p>
+            <p><a href="./admin.html">Administration</a></p>
+        </nav>
+        <div class="icon-log">
+            <i id="logIcon" class="fa " onclick="logout()"></i>
+        </div>
+    
+    </header>
+    <main class="container">
+        <h2 class="title">Calculatrice</h2>
+        <div class="calculatrice">
+            <button onclick="calculer(event)" class="btn">0</button>
+            <button onclick="calculer(event)" class="btn">1</button>
+            <button onclick="calculer(event)" class="btn">2</button>
+            <button onclick="calculer(event)" class="btn">3</button>
+            <button onclick="calculer(event)" class="btn">+</button>
+            <button onclick="calculer(event)" class="btn">4</button>
+            <button onclick="calculer(event)" class="btn">5</button>
+            <button onclick="calculer(event)" class="btn">6</button>
+            <button onclick="calculer(event)" class="btn">-</button>
+            <button onclick="calculer(event)" class="btn">7</button>
+            <button onclick="calculer(event)" class="btn">8</button>
+            <button onclick="calculer(event)" class="btn">9</button>
+            <button onclick="calculer(event)" class="btn">x</button>
+            <button onclick="calculer(event)" class="btn">0</button>
+            <button onclick="calculer(event)" class="btn">(</button>
+            <button onclick="calculer(event)" class="btn">)</button>
+            <button onclick="calculer(event)" class="btn">/</button>
+            <button onclick="remove()" class="btn">←</button>
+            <button onclick="calculer(event)" class="btn">.</button>
+            <button onclick="getResult()" class="btn">=</button>
+
+        </div>
+    </main>
+    <script src="../js/script.js"></script> 
+    <script src="../js/calculatrice.js"></script> 
+
+</body>
+</html>

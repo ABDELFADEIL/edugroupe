@@ -1,0 +1,15 @@
+package tableauxUneDim;
+
+import lombok.Data;
+@Data
+public class PersonneNew {
+	//1	Attributs
+	private int id;
+	private String nom;
+	private String prenom;
+	private String email;
+	
+	public boolean equals(Voiture v) {
+		return true;
+	}
+}

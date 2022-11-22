@@ -1,0 +1,116 @@
+package tableauxUneDim;
+
+public class Tp3 {
+
+	public static void main(String[] args) {
+		
+		int [][] tableauEntier = {
+									{3,4,6,11},
+									{2,0,7,9},
+									{1,5,12,0}
+								  };
+		
+		System.out.println("Tous Positif ? " + tousPositif3(tableauEntier));
+		proportionDeNull(tableauEntier);
+	}
+	/**
+	 * 
+	 * @param tabEnt
+	 * @return
+	 */
+	public static boolean tousPositif(int[][] tabEnt) {
+		boolean positif = true;	
+		int i =0;	
+		while(i<tabEnt.length && positif) {
+			int j=0;	
+			while(j<tabEnt[i].length && positif) {
+				
+				if (tabEnt[i][j]<0)
+					positif = false;
+				
+			  j++;		
+			}
+			i++;
+		}		
+		return positif;
+	}
+	
+	public static boolean tousPositif2(int[][] tabEnt) {
+		boolean positif = true;	
+
+		for(int i=0,k=0;i<tabEnt.length && positif;i++) {		
+			for(int j=0;j<tabEnt[i].length && positif;j++) {		
+				if (tabEnt[i][j]<0) {
+					System.out.println("k " + tabEnt[i][j]);
+					positif = false;	
+				}
+			}
+		}		
+		return positif;
+	}
+	/**
+	 * 
+	 * @param tabEnt
+	 * @return
+	 */
+	public static boolean tousPositif3(int[][] tabEnt) {
+		boolean positif = true;	
+		int k=0;
+		for(int[] sousTab : tabEnt) {		
+			for(int val: sousTab) {	
+				
+				if (val <0) {
+					System.out.println("k " + val);
+					positif = false;
+					
+					return positif;
+				}
+			}
+		}		
+		return positif;
+	}
+	/**
+	 * 
+	 * @param tabEnt
+	 */
+	public static void proportionDeNull(int[][] tabEnt) {
+		int i =0;		
+		double taille =0,cptNull=0;
+		while(i<tabEnt.length) {
+			int j=0;	
+			while(j<tabEnt[i].length) {			
+				if (tabEnt[i][j]==0)
+					cptNull++;
+			  j++;	
+			  taille++;
+			}
+			i++;	
+		}	
+		System.out.println("Proportion de null = " + ((cptNull/taille)*100) +"%");
+	}
+	
+	
+	public static int sommeEltImpairDubordDuTableau(int[][] tabEnt) {
+		int somme = 0;
+		
+			int i=0;
+			
+			while(i<tabEnt.length) {
+				
+				int j =0;
+				
+				while(j<tabEnt[i].length) {
+					
+					
+					j++;
+				}
+				
+				i++;
+			}
+		
+		return somme;
+	}
+	
+	
+	
+}

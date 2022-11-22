@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <Link href="../css/style.css" rel="stylesheet" />
+    <title>ViaAduc</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="icon">
+            <a href="./index.html">
+                <img src="../img/viaaduc_icon.jpeg" alt="ViaAduc icon">
+            </a>
+        </div>
+        <nav class="nav">
+            <p><a href="./profile.html">Espace client</a></p>
+            <p><a href="./produits.html">Produits</a></p>
+            <p><a href="./admin.html">Administration</a></p>
+        </nav>
+        <div class="icon-log">
+            <i class="fa fa-apple" style="margin-right:15px"><a onclick="calculatrice()"
+                    href="./exercice_dom.html"></a></i>
+            <i id="logIcon" class="fa " onclick="logout()"></i>
+        </div>
+
+    </header>
+    <main class="container">
+        <div class="accueil">
+            <div class="aside">
+                <p>Catégories</p>
+                <p>Vêtements</p>
+                <p>Chaussures</p>
+                <p>Parfums</p>
+                <p>Beauté & soins de corps</p>
+            </div>
+            <div class="produits">
+                <!-- Start product card -->
+                <div class="card">
+                    <div class="img-container">
+                        <img class="image-product"
+                            src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2872&q=80"
+                            alt="image de produit" srcset="">
+                    </div>
+                    <div class="detail" id="detail">
+                        <div class="title">
+                            <h5>Nom de produits</h5>
+                        </div>
+                        <div class="description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                            </p>
+                        </div>
+                        <div class="card-bottom">
+                            <p>232€</p>
+                            <p><i class="fa fa-cart-plus" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End product card -->
+                <!-- Start product card -->
+                <div class="card">
+                    <div class="img-container">
+                        <img class="image-product"
+                            src="https://images.unsplash.com/photo-1554568218-0f1715e72254?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                            alt="image de produit" srcset="">
+                    </div>
+                    <div class="detail" id="detail">
+                        <div class="title">
+                            <h5>Nom de produits</h5>
+                        </div>
+                        <div class="description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                            </p>
+                        </div>
+                        <div class="card-bottom">
+                            <p>232€</p>
+                            <p><i class="fa fa-cart-plus" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End product card -->
+                <!-- Start product card -->
+                <div class="card">
+                    <div class="img-container">
+                        <img class="image-product"
+                            src="https://images.unsplash.com/photo-1582142839970-2b9e04b60f65?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                            alt="image de produit" srcset="">
+                    </div>
+                    <div class="detail" id="detail">
+                        <div class="title">
+                            <h5>Nom de produits</h5>
+                        </div>
+                        <div class="description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                            </p>
+                        </div>
+                        <div class="card-bottom">
+                            <p>232€</p>
+                            <p><i class="fa fa-cart-plus" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End product card -->
+                <!-- Start product card -->
+                <div class="card">
+                    <div class="img-container">
+                        <img class="image-product"
+                            src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2872&q=80"
+                            alt="image de produit" srcset="">
+                    </div>
+                    <div class="detail" id="detail">
+                        <div class="title">
+                            <h5>Nom de produits</h5>
+                        </div>
+                        <div class="description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                            </p>
+                        </div>
+                        <div class="card-bottom">
+                            <p>232€</p>
+                            <p><i class="fa fa-cart-plus" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End product card -->
+                <!-- Start product card -->
+                <div class="card">
+                    <div class="img-container">
+                        <img class="image-product"
+                            src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                            alt="image de produit" srcset="">
+                    </div>
+                    <div class="detail" id="detail">
+                        <div class="title">
+                            <h5>Nom de produits</h5>
+                        </div>
+                        <div class="description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                            </p>
+                        </div>
+                        <div class="card-bottom">
+                            <p>232€</p>
+                            <p><i class="fa fa-cart-plus" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End product card -->
+                <!-- Start product card -->
+                <div class="card">
+                    <div class="img-container">
+                        <img class="image-product"
+                            src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                            alt="image de produit" srcset="">
+                    </div>
+                    <div class="detail" id="detail">
+                        <div class="title">
+                            <h5>Nom de produits</h5>
+                        </div>
+                        <div class="description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                            </p>
+                        </div>
+                        <div class="card-bottom">
+                            <p>232€</p>
+                            <p><i class="fa fa-cart-plus" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End product card -->
+                <!-- Start product card -->
+                <div class="card">
+                    <div class="img-container">
+                        <img class="image-product"
+                            src="https://images.unsplash.com/photo-1541377182189-74e4a4ea12e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2016&q=80"
+                            alt="image de produit" srcset="">
+                    </div>
+                    <div class="detail" id="detail">
+                        <div class="title">
+                            <h5>Nom de produits</h5>
+                        </div>
+                        <div class="description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                            </p>
+                        </div>
+                        <div class="card-bottom">
+                            <p>232€</p>
+                            <p><i class="fa fa-cart-plus" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End product card -->
+                <!-- Start product card -->
+                <div class="card">
+                    <div class="img-container">
+                        <img class="image-product"
+                            src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2872&q=80"
+                            alt="image de produit" srcset="">
+                    </div>
+                    <div class="detail" id="detail">
+                        <div class="title">
+                            <h5>Nom de produits</h5>
+                        </div>
+                        <div class="description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                            </p>
+                        </div>
+                        <div class="card-bottom">
+                            <p>232€</p>
+                            <p><i class="fa fa-cart-plus" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End product card -->
+                <!-- Start product card -->
+                <div class="card">
+                    <div class="img-container">
+                        <img class="image-product"
+                            src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2872&q=80"
+                            alt="image de produit" srcset="">
+                    </div>
+                    <div class="detail" id="detail">
+                        <div class="title">
+                            <h5>Nom de produits</h5>
+                        </div>
+                        <div class="description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                            </p>
+                        </div>
+                        <div class="card-bottom">
+                            <p>232€</p>
+                            <p><i class="fa fa-cart-plus" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End product card -->
+                <!-- Start product card -->
+                <div class="card">
+                    <div class="img-container">
+                        <img class="image-product"
+                            src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2872&q=80"
+                            alt="image de produit" srcset="">
+                    </div>
+                    <div class="detail" id="detail">
+                        <div class="title">
+                            <h5>Nom de produits</h5>
+                        </div>
+                        <div class="description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                            </p>
+                        </div>
+                        <div class="card-bottom">
+                            <p>232€</p>
+                            <p><i class="fa fa-cart-plus" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End product card -->
+                <!-- Start product card -->
+                <div class="card">
+                    <div class="img-container">
+                        <img class="image-product"
+                            src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2872&q=80"
+                            alt="image de produit" srcset="">
+                    </div>
+                    <div class="detail" id="detail">
+                        <div class="title">
+                            <h5>Nom de produits</h5>
+                        </div>
+                        <div class="description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                            </p>
+                        </div>
+                        <div class="card-bottom">
+                            <p>232€</p>
+                            <p><i class="fa fa-cart-plus" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End product card -->
+                <!-- Start product card -->
+                <div class="card">
+                    <div class="img-container">
+                        <img class="image-product"
+                            src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2872&q=80"
+                            alt="image de produit" srcset="">
+                    </div>
+                    <div class="detail" id="detail">
+                        <div class="title">
+                            <h5>Nom de produits</h5>
+                        </div>
+                        <div class="description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                            </p>
+                        </div>
+                        <div class="card-bottom">
+                            <p>232€</p>
+                            <p><i class="fa fa-cart-plus" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End product card -->
+                <!-- Start product card -->
+                <div class="card">
+                    <div class="img-container">
+                        <img class="image-product"
+                            src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2872&q=80"
+                            alt="image de produit" srcset="">
+                    </div>
+                    <div class="detail" id="detail">
+                        <div class="title">
+                            <h5>Nom de produits</h5>
+                        </div>
+                        <div class="description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                            </p>
+                        </div>
+                        <div class="card-bottom">
+                            <p>232€</p>
+                            <p><i class="fa fa-cart-plus" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End product card -->
+                <!-- Start product card -->
+                <div class="card">
+                    <div class="img-container">
+                        <img class="image-product"
+                            src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2872&q=80"
+                            alt="image de produit" srcset="">
+                    </div>
+                    <div class="detail" id="detail">
+                        <div class="title">
+                            <h5>Nom de produits</h5>
+                        </div>
+                        <div class="description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                            </p>
+                        </div>
+                        <div class="card-bottom">
+                            <p>232€</p>
+                            <p><i class="fa fa-cart-plus" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End product card -->
+                <!-- Start product card -->
+                <div class="card">
+                    <div class="img-container">
+                        <img class="image-product"
+                            src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2872&q=80"
+                            alt="image de produit" srcset="">
+                    </div>
+                    <div class="detail" id="detail">
+                        <div class="title">
+                            <h5>Nom de produits</h5>
+                        </div>
+                        <div class="description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                            </p>
+                        </div>
+                        <div class="card-bottom">
+                            <p>232€</p>
+                            <p><i class="fa fa-cart-plus" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End product card -->
+                <!-- Start product card -->
+                <div class="card">
+                    <div class="img-container">
+                        <img class="image-product"
+                            src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2872&q=80"
+                            alt="image de produit" srcset="">
+                    </div>
+                    <div class="detail" id="detail">
+                        <div class="title">
+                            <h5>Nom de produits</h5>
+                        </div>
+                        <div class="description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                            </p>
+                        </div>
+                        <div class="card-bottom">
+                            <p>232€</p>
+                            <p><i class="fa fa-cart-plus" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End product card -->
+                 <!-- Start product card -->
+                 <div class="card">
+                    <div class="img-container">
+                        <img class="image-product"
+                            src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2872&q=80"
+                            alt="image de produit" srcset="">
+                    </div>
+                    <div class="detail" id="detail">
+                        <div class="title">
+                            <h5>Nom de produits</h5>
+                        </div>
+                        <div class="description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                            </p>
+                        </div>
+                        <div class="card-bottom">
+                            <p>232€</p>
+                            <p><i class="fa fa-cart-plus" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End product card -->
+                 <!-- Start product card -->
+                 <div class="card">
+                    <div class="img-container">
+                        <img class="image-product"
+                            src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2872&q=80"
+                            alt="image de produit" srcset="">
+                    </div>
+                    <div class="detail" id="detail">
+                        <div class="title">
+                            <h5>Nom de produits</h5>
+                        </div>
+                        <div class="description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunts autem?
+                            </p>
+                        </div>
+                        <div class="card-bottom">
+                            <p>232€</p>
+                            <p><i class="fa fa-cart-plus" aria-hidden="true"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End product card -->
+                
+            </div>
+        </div>
+    </main>
+    <script src="../js/script.js"></script>
+    <script src="../js/produit.js"></script>
+</body>
+
+</html>

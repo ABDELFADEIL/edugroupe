@@ -1,0 +1,14 @@
+package tableauxUneDim;
+
+import lombok.Data;
+
+
+public class PersonneNew {
+	//1	Attributs
+	private int id;
+	private String nom;
+	private String prenom;
+	private String email;
+	
+	
+}

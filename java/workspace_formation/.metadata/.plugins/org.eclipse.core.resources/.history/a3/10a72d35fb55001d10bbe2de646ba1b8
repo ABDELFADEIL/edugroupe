@@ -1,0 +1,57 @@
+package tableauxUneDim;
+
+public class Poo {
+
+	public static void main(String[] args) {
+		/**
+		 * 	1-	Classe
+		 *  2-	Objet
+		 *  3-	propriétes
+		 *  	3-1	les types primitifs comme attributs
+		 *  	3-2	les objects comme attributs
+		 *  	3-3	les tableaux comme attributs
+		 *  4-	méthodes de classes (getteurs et setteurs ou accesseurs et mutateurs)
+		 *  5-	constructeurs
+		 *  6-	les visibilités ==> encapsulation
+		 *  7-	la surchage
+		 *  8-	Héritage
+		 *  	7-1 la réécriture
+		 *  	7-2 classe fille ou sous classe
+		 * 	9- polymorphisme
+		 * 
+		 * 	Exemple : Personne (id,nom, prenom, email)
+		 */
+		
+		// Test
+		Personne pers1 = new Personne();
+		Personne pers2 = new Personne(1);
+		Personne pers3 = new Personne(2, "Lisa");
+		// Affichage des objets
+		System.out.println(pers1.toString());
+		System.out.println(pers2.toString());
+		System.out.println(pers3.toString());
+		
+		pers1 = pers2;
+		
+		// comparer deux objets
+		System.out.println(pers1 == pers2); // vérification des adresses mémoires
+		
+		System.out.println("pers1 == pers2 ? " +  pers1.equals(pers2));
+		
+		// comparer que deux objets sont dans le même état on utilise la méthode equals
+		
+		
+		PersonneNew p1 = new PersonneNew();
+		PersonneNew p2 = new PersonneNew();
+					p2.setId(2);
+					p2.setNom("Farncis");
+		PersonneNew p3 = new PersonneNew();
+		
+		System.out.println(p1.toString());
+		System.out.println(p2.toString());
+			p2.setId(-100);
+		System.out.println(p3.toString());
+		
+	}
+
+}
