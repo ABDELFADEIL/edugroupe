@@ -1,0 +1,41 @@
+<div class="profile" id="profile">
+  <div class="aside">
+    <div class="row">
+      <fa-icon [icon]="faUserCircle"></fa-icon>
+      <p>Mes informations</p>
+    </div>
+    <div class="row">
+      <fa-icon [icon]="faList"></fa-icon>
+      <p>Mes commandes</p>
+    </div>
+  </div>
+  <section id="profile-card" *ngIf="user">
+    <div class="profile-info">
+      <p>Nom: <span id="nom">{{ user.nom }}</span></p>
+      <p>Prénom: <span id="prenom">{{ user.prenom }}</span></p>
+      <p>Date de naissance: <span id="dateNaissance">{{ user.dateNaissance }}</span></p>
+      <div>
+        <p>Email: <span id="email">{{ user.email }}</span>
+          <a onclick="updateEmail()">
+            <fa-icon [icon]="faPencilRuler"></fa-icon>
+          </a>
+        </p>
+      </div>
+      <div class="inputBoxUpdate" id="updateEmail">
+        <input id="emailInput" type="text" name="email" required="required">
+        <span onclick="sendUpdateEmail()">Envoyer</span>
+      </div>
+      <div>
+        <p>Adresse: <span id="adresse">{{ user.adresse }}</span>
+          <a onclick="updateAddress()">
+            <fa-icon [icon]="faPencilRuler"></fa-icon>
+          </a>
+        </p>
+      </div>
+      <div class="inputBoxUpdate" id="updateAddress">
+        <input id="addressInput" type="text" name="adresse" required="required">
+        <span onclick="sendUpdateAddress()">Envoyer</span>
+      </div>
+    </div>
+  </section>
+</div>

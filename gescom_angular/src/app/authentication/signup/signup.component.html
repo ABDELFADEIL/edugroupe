@@ -1,0 +1,62 @@
+<div class="container">
+  <div *ngIf="!created" class="signup box" id="box">
+    <form class="form signup" id="signup" #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+      <h2>Créer un compte</h2>
+      <div class="row50">
+        <div class="inputBox">
+          <input type="text" name="nom" required="required" [(ngModel)]="user.nom">
+          <span>Nom</span>
+          <i></i>
+        </div>
+        <div class="inputBox">
+          <input type="text" name="prenom" required="required" [(ngModel)]="user.prenom">
+          <span>Prénom</span>
+          <i></i>
+        </div>
+      </div>
+      <div class="row50">
+        <div class="inputBox">
+          <input type="date" name="dateNaissance" required="required" [(ngModel)]="user.dateNaissance">
+          <span>Date de naissance</span>
+          <i></i>
+        </div>
+        <div class="inputBox">
+          <input type="text" name="email" required="required" [(ngModel)]="user.email">
+          <span>Email</span>
+          <i></i>
+        </div>
+      </div>
+      <div *ngIf="errors" class="inputBox">
+        <a>{{errors}}</a>
+      </div>
+      <div class="row50">
+        <div class="inputBox">
+          <input type="password" name="password" required="required" [(ngModel)]="user.password">
+          <span>Mot de passe</span>
+          <i></i>
+        </div>
+        <div class="inputBox">
+          <input type="password" name="rePassword" required="required" ngModel>
+          <span>Confirmer mot de passe</span>
+          <i></i>
+        </div>
+      </div>
+      <div class="row50">
+        <div class="inputBox">
+          <input type="text" name="adresse" required="required" [(ngModel)]="user.adresse">
+          <span>Adresse postale</span>
+          <i></i>
+        </div>
+      </div>
+
+      <div class="links">
+        <a [routerLink]="['/login']">Vous avez un compte ? connectez vous</a>
+      </div>
+      <input type="submit" value="Envoyer">
+    </form>
+  </div>
+  <div id="registered" *ngIf="created">
+    <p>Vous compte a été créé!</p>
+    <a [routerLink]="['/login']" >Connectez vous</a>
+  </div>
+</div>

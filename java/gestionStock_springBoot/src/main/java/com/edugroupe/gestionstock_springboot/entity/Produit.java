@@ -24,6 +24,7 @@ public class Produit implements Serializable {
     private String designation;
     private double prix;
     private int stock;
+    @Column(name = "image_url")
     private String imageUrl;
     @ManyToOne
     @JoinColumn(name = "categorie_id")

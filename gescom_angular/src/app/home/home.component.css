@@ -1,0 +1,154 @@
+.home {
+  margin-top: 40px;
+}
+#home {
+  position: relative;
+  width: 90vw;
+  background-color: #888a8c;
+  height: 80vh;
+  margin: auto;
+  overflow: hidden;
+}
+
+#home .slider {
+  position: relative;
+  width: 400%;
+  height: 100%;
+  animation: animate 10s linear infinite;
+}
+#home .slider .slide {
+  position: relative;
+  width: 25%;
+  float: left;
+  height: 100%;
+
+}
+
+#home .slider .slide .content {
+  margin: 0 20px;
+  padding: 10px;
+  position: absolute;
+  bottom: 10%;
+  text-align: center;
+  font-size: 2em;
+  width: 96%;
+  background-color: rgba(255, 255, 255, .6);
+  color: #FFFFFF;
+  border-radius: 9px;
+}
+#home .slider .slide h4 {
+  color: #243a3e;
+}
+#home .slider .slide p {
+  font-size: 1.4rem;
+  color: #314e53;
+}
+#home .slider .slide button {
+  font-size: 1.2rem;
+  padding: 10px;
+  border: 1px solid #003B49;
+  border-radius: 50px;
+  color: #314e53;
+  background-color: #FFFFFF;
+  width: 120px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  /*box-shadow: 2px 5px 10px #e4e4e4;*/
+}
+#home .slider .slide button:hover {
+  border: 1px solid #FFFFFF;
+  background-color: #003B49;
+  color: #FFFFFF;
+}
+@keyframes animate {
+  0% {
+    left: 0;
+  }
+  20% {
+    left: 0;
+  }
+  25% {
+    left: -100%;
+  }
+  45% {
+    left: -100%;
+  }
+  50% {
+    left: -200%;
+  }
+  70% {
+    left: -200%;
+  }
+  75% {
+    left: -300%;
+  }
+  95% {
+    left: -300%;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+.home .new-products {
+  display: flex;
+  justify-content: center;
+  padding: 50px 0;
+  gap: 30px;
+}
+.home .new-products .card {
+  text-align: center;
+  position: relative;
+  width: 300px;
+  height: auto;
+  background: linear-gradient(-45deg, #166477, #dff0f3); /* #f403d1, #64b5f6 */
+  border-radius: 15px;
+  margin: 0;
+  padding: 0 0 10px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, .2);
+  transition: .5s;
+  overflow: hidden;
+}
+.price, .title {
+  margin: 15px 0 15px;
+}
+.option {
+  position: relative;
+  z-index: 2;
+}
+.option ul {
+  margin: 0;
+  padding: 0;
+}
+.option ul li {
+  margin: 0 0 10px;
+  padding: 0;
+  list-style: none;
+  color: #FFFFFF;
+  font-size: 16px;
+}
+
+.card a {
+  position: relative;
+  z-index: 2;
+  background: #FFFFFF;
+  color: #314e53;
+  text-decoration: none;
+  width: 140px;
+  height: 40px;
+  display: block;
+  margin: 20px auto 0;
+  line-height: 40px;
+  border-radius: 40px;
+  font-size: 16px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+}
+.card a:hover {
+  background: #003B49;
+  color: #FFFFFF;
+}
+#home img {
+  object-fit: fill;
+  width:100%;
+  height:100%;
+}

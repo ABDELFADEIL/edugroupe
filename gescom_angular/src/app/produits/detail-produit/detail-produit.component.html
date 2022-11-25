@@ -1,0 +1,23 @@
+<div class="container product-details">
+  <div class="row-produit" *ngIf="produit">
+    <div class="image-produit">
+      <img [src]="produit.imageUrl" alt="" srcset="">
+    </div>
+    <div class="detail-produit">
+      <div><h3> {{produit.nom}}</h3></div>
+      <div class="price"><p>Prix: {{produit.prix + '€'}}</p></div>
+      <div class="description"><p>Description: {{produit.designation}} Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Aliquam consequuntur cumque id minus non perspiciatis quas rem. Aliquid amet
+        distinctio doloremque illo labore magnam, modi pariatur placeat quo repellendus unde.</p></div>
+      <div class="produit-footer">
+        <div>
+          <p>Quantité</p>
+        </div>
+        <div>
+          <button id="button"><fa-icon class=""
+                      [icon]="faCartPlus" aria-hidden="true"></fa-icon> Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

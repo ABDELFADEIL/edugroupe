@@ -1,0 +1,19 @@
+<header class="header">
+  <div class="icon">
+    <a [routerLink]="['/home']" class="logo">
+      Via<span>a</span>duc
+      <!-- <img src="./assets/images/viaaduc_icon.jpeg" alt="ViaAduc icon"> -->
+    </a>
+  </div>
+  <nav class="nav">
+    <p routerLinkActive="active"><a [routerLink]="['/home']">Accueil</a></p>
+    <p routerLinkActive="active"><a [routerLink]="['/profile']">Espace client</a></p>
+    <p routerLinkActive="active"><a [routerLink]="['/produits']">Produits</a></p>
+    <p routerLinkActive="active"><a [routerLink]="['/admin']">Administration</a></p>
+  </nav>
+  <div class="icon-log">
+    <fa-icon *ngIf="token" [icon]="faSignOutAlt" id="logInIcon" onclick="logout()"></fa-icon>
+    <fa-icon [routerLink]="['/login']" *ngIf="!token" [icon]="faUserCircle" id="logOutIcon"></fa-icon>
+  </div>
+
+</header>

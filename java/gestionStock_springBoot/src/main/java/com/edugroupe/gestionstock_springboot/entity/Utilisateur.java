@@ -24,8 +24,8 @@ public class Utilisateur implements Serializable {
     private String nom;
     private String prenom;
     private String adresse;
-    @Column(name = "ddn_client")
-    private LocalDate ddnClient;
+    @Column(name = "date_naissance")
+    private LocalDate dateNaissance;
     @Column(name = "email", unique = true, nullable = false)
     private String email;
     @Column(name = "password", nullable = false)

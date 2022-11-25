@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="produits">
+    <div class="aside">
+      <p>Catégories</p>
+      <p>Vêtements</p>
+      <p>Chaussures</p>
+      <p>Parfums</p>
+      <p>Beauté & soins de corps</p>
+    </div>
+    <div class="produits-cards">
+      <!-- Start product card -->
+      <div class="card" *ngFor="let produit of produits" (click)="detailProduit(produit.id)">
+        <div class="img-container">
+          <img class="image-product"
+               [src]="produit?.imageUrl"
+               alt="image de produit" srcset="">
+        </div>
+        <div class="detail" id="detail">
+          <div class="title">
+            <h5>{{produit.nom}}</h5>
+          </div>
+          <div class="description">
+            <p>
+              {{produit.designation}}
+            </p>
+          </div>
+          <div class="card-bottom">
+            <p> {{produit.prix}}€</p>
+            <p><fa-icon class="fa fa-cart-plus"
+                        onMouseOver="this.style.color='green';this.style.fontSize='1.5rem'"
+                        onMouseOut="this.style.color='#314e53';this.style.fontSize='1.4rem'"
+                        [icon]="faCartPlus" style="color:#314e53; font-size: 1.5rem;margin-bottom: 15px" aria-hidden="true"></fa-icon></p>
+          </div>
+        </div>
+      </div>
+      <!-- End product card -->
+
+    </div>
+  </div>
+</div>

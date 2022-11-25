@@ -40,7 +40,7 @@ public class UtilisateurDto {
         return new UtilisateurDto(
                 utilisateur.getId(),
                 utilisateur.getNom(),
-                utilisateur.getPrenom(), utilisateur.getDdnClient(),
+                utilisateur.getPrenom(), utilisateur.getDateNaissance(),
                 utilisateur.getEmail(), utilisateur.getPassword(),
                 utilisateur.getAdresse(), roleName);
     }
