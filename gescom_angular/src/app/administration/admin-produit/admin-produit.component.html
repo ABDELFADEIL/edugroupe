@@ -1,0 +1,41 @@
+<div class="container admin-page">
+  <div>
+    <app-admin-menu></app-admin-menu>
+  </div>
+  <main class="admin-main">
+    <div class="table-produits">
+      <h3>List de produits</h3>
+      <table>
+        <thead>
+        <tr>
+          <th>#Id</th>
+          <th>Nom</th>
+          <th>Category</th>
+          <th>Designation</th>
+          <th>Prix</th>
+          <th>Stock</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let produit of produits; let i=index;">
+          <td>{{ produit.id }}</td>
+          <td>{{ produit.nom }}</td>
+          <td>{{ produit.categorie.nom }}</td>
+          <td class="designation">{{ produit.designation }}</td>
+          <td class="primary">{{ produit.prix }}</td>
+          <td class="warning">{{ produit.stock }}</td>
+        </tr>
+        </tbody>
+        <tfoot>
+           <tr>
+             <td colspan="5" style="text-align: right; padding-right: 10px">
+               <a href="#">Show all</a>
+             </td>
+           </tr>
+        </tfoot>
+      </table>
+
+
+    </div>
+  </main>
+</div>

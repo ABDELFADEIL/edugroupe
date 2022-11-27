@@ -1,0 +1,28 @@
+<aside class="admin-menu">
+  <ul class="sidebar">
+    <li>
+      <a routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/admin/">
+        <span class="icon"><fa-icon [icon]="faHome"></fa-icon></span>
+        <span class="title">Dashboard</span>
+      </a>
+    </li>
+    <li>
+      <a routerLinkActive="active" routerLink="/admin/produits">
+        <span class="icon"><fa-icon [icon]="faShopify"></fa-icon></span>
+        <span class="title">Produits</span>
+      </a>
+    </li>
+    <li>
+      <a routerLinkActive="active" routerLink="/admin/clients">
+        <span class="icon"><fa-icon [icon]="faUserCircle"></fa-icon></span>
+        <span class="title">Clients</span>
+      </a>
+    </li>
+    <li>
+      <a routerLinkActive="active" routerLink="/admin/commandes">
+        <span class="icon"><fa-icon [icon]="faClipboardList"></fa-icon></span>
+        <span class="title">Commandes</span>
+      </a>
+    </li>
+  </ul>
+</aside>

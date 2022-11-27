@@ -23,9 +23,9 @@ export class HomeComponent implements OnInit{
   getProduct(){
     this.produitService.getProduits().subscribe(
       (response)=> {
-        this.produits = response;
-        this.sliderProduits = this.produits.slice(0, 4);
-        this.newProduits = this.produits.slice(4, 7);
+        this.produits = response.content;
+        this.sliderProduits = this.produits?.slice(0, 4);
+        this.newProduits = this.produits?.slice(4, 7);
         console.log(this.sliderProduits);
         console.log(this.newProduits);
         let p: Produit  = new Produit(1, "Java testing",

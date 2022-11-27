@@ -1,12 +1,12 @@
 <div class="container">
   <div class="produits">
-    <div class="aside">
-      <p>Catégories</p>
-      <p>Vêtements</p>
-      <p>Chaussures</p>
-      <p>Parfums</p>
-      <p>Beauté & soins de corps</p>
-    </div>
+      <ul class="sidebar">
+        <li><a>Catégories</a></li>
+        <li><a>Vêtements</a></li>
+        <li><a>Chaussures</a></li>
+        <li><a>Parfums</a></li>
+        <li><a>Beauté & soins de corps</a></li>
+      </ul>
     <div class="produits-cards">
       <!-- Start product card -->
       <div class="card" *ngFor="let produit of produits" (click)="detailProduit(produit.id)">

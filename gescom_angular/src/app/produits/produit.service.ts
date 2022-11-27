@@ -11,8 +11,8 @@ export class ProduitService implements OnInit{
 
   constructor(private http: HttpClient) { }
 
-  getProduits() :Observable<Produit[]>{
-    return this.http.get<Produit[]>(API_URL + 'produits')
+  getProduits({page = 0, size = 1000000} = {}) :Observable<any>{
+    return this.http.get<any>(API_URL + 'produits?page=' + page + '&size=' + size )
       .pipe(
         tap((response:any) => {
           console.log(response);

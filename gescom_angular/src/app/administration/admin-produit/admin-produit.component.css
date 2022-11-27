@@ -1,0 +1,65 @@
+main .table-produits {
+  margin-top: 2rem;
+  padding: var(--padding-1);
+  overflow-x:auto;
+}
+main .table-produits h3{
+  margin-bottom: 1rem;
+  margin-left: 0.4rem;
+}
+
+main .table-produits table{
+  background-color: var(--color-white);
+  width: 96%;
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--box-shadow);
+  transition: all 300ms ease;
+  border-collapse: collapse;
+  min-width: 360px;
+  /* overflow: hidden; */
+}
+main .table-produits table:hover {
+  /* box-shadow: none; */
+}
+
+main .table-produits table td {
+  height: 2.8rem;
+  border-bottom: 1px solid var(--color-light);
+}
+main .table-produits table thead th {
+  text-align: left;
+  /* border-bottom: 1px dashed var(--color-light); */
+}
+
+main .table-produits table tbody tr:last-child td {
+   border: none;
+}
+main .table-produits table thead th {
+  font-size: 14px;
+  padding-bottom: 5px;
+  color: var(--color-dark);
+  border-bottom: 1px solid #dddddd;
+}
+main .table-produits table thead tr th:nth-last-child(1),
+main .table-produits table tbody tr td:nth-last-child(1)
+{
+  text-align: right;
+}
+main .table-produits table thead tr {
+  background-color: var(--color-background);
+  text-align: left;
+}
+main .table-produits table thead th,
+main .table-produits table tbody td
+{
+  padding: 10px 10px;
+}
+tbody tr:hover {
+  background-color: #f3f3f3;
+}
+td.designation{
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width: 70px;
+}
