@@ -8,14 +8,16 @@
    height: 100%;
 }
 
-.admin-menu ul li a
+ ul.admin-menu li {
+ }
+ ul.admin-menu li a
 {
   position: relative;
   display: flex;
   transition: all ease-in .5s;
 }
 
-.admin-menu ul li a .icon
+ ul.admin-menu li a .icon
 {
   position: relative;
   min-width: 50px;
@@ -23,11 +25,11 @@
   line-height: 50px;
   text-align: center;
 }
-.admin-menu ul li a .icon fa-icon
+ ul.admin-menu li a .icon fa-icon
 {
   font-size: 1.6em;
 }
-.admin-menu ul li a .title
+ ul.admin-menu li a .title
 {
   position: relative;
   display: block;

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProduitService} from "../../produits/produit.service";
 import {Produit} from "../../produits/produit";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-admin-produit',
@@ -9,6 +10,7 @@ import {Produit} from "../../produits/produit";
 })
 export class AdminProduitComponent implements OnInit{
 
+  faPlus = faPlus;
   produits?: Produit [];
   constructor(private produitService: ProduitService) {
   }

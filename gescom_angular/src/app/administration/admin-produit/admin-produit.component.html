@@ -1,10 +1,13 @@
-<div class="container admin-page">
-  <div>
+<div class="admin-page">
     <app-admin-menu></app-admin-menu>
-  </div>
   <main class="admin-main">
     <div class="table-produits">
-      <h3>List de produits</h3>
+      <div class="top-table">
+        <h3>List de produits</h3>
+        <div class="add-product">
+          <a><fa-icon [icon]="faPlus"></fa-icon><span>Ajouter</span></a>
+        </div>
+      </div>
       <table>
         <thead>
         <tr>
