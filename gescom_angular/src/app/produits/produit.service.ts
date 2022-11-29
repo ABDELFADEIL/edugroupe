@@ -31,4 +31,13 @@ export class ProduitService implements OnInit{
         }),
         catchError(err => of(err)))
   }
+
+  updateAddProduit(produit: Produit) :Observable<Produit>{
+    return this.http.post<Produit[]>(API_URL + 'produits', produit)
+      .pipe(
+        tap((response:any) => {
+          console.log(response);
+        }),
+        catchError(err => of(err)))
+  }
 }

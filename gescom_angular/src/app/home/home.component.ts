@@ -28,8 +28,7 @@ export class HomeComponent implements OnInit{
         this.newProduits = this.produits?.slice(4, 7);
         console.log(this.sliderProduits);
         console.log(this.newProduits);
-        let p: Produit  = new Produit(1, "Java testing",
-          "", 100, 0, "", new Categorie(0, "cat"));
+        let p: Produit  = new Produit();
         //console.log(this.produits.filter(p=> p.nom.match('Java')));
       }
     );

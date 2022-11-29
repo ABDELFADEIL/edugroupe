@@ -31,7 +31,7 @@ export class ProduitComponent implements OnInit{
     )
   }
 
-  detailProduit(id:number) {
+  detailProduit(id:any) {
     this.router.navigate(['/produits', id])
   }
 }

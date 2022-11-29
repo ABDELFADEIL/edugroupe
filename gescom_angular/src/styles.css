@@ -15,6 +15,7 @@
   --color-primary-variant: #111e88;
   --color-dark-variant: #677483;
   --color-background: #f6f6f9;
+  --color-danger-1: #f53645;
 
   --card-border-radius: 4px;
   --card-radius-1: 0.4rem;
@@ -123,7 +124,7 @@ b
 {
   color: var(--color-primary);
 }
-.dander
+.danger
 {
   color: var(--color-danger);
 }
@@ -135,7 +136,10 @@ b
 {
   color: var(--color-warning);
 }
-
+.danger-1
+{
+  color: var(--color-danger-1);
+}
 aside
 {
   height: 100vh;
@@ -252,7 +256,7 @@ body {
   margin-top: 50px;
   font-size: .9rem;
 }
-.container .form .inputBox input
+.container .form .inputBox input, .inputBox input
 {
   padding: 15px 5px 10px;
   outline: none;

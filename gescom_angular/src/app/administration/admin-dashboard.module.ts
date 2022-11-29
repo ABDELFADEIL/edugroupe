@@ -9,6 +9,8 @@ import { AdminProduitComponent } from './admin-produit/admin-produit.component';
 import { AdminClientComponent } from './admin-client/admin-client.component';
 import { AdminCommandeComponent } from './admin-commande/admin-commande.component';
 import { AdminMenuComponent } from './component/admin-menu/admin-menu.component';
+import { FormProduitComponent } from './form-produit/form-produit.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 const adminRoutes: Routes = [
@@ -23,12 +25,15 @@ const adminRoutes: Routes = [
     AdminProduitComponent,
     AdminClientComponent,
     AdminCommandeComponent,
-    AdminMenuComponent
+    AdminMenuComponent,
+    FormProduitComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(adminRoutes),
     FontAwesomeModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [AdminDashboardService, ProduitService]
 })
