@@ -7,7 +7,7 @@
     <div class="table-produits">
       <div class="top-table">
         <h3>List de produits</h3>
-        <div class="add-product">
+        <div class="add-product" *ngIf="!updateAdd">
           <a (click)="onChangeProduit(undefined)"><fa-icon [icon]="faPlus"></fa-icon><span>Ajouter</span></a>
         </div>
       </div>
@@ -30,9 +30,9 @@
           <td>{{ produit.nom }}</td>
           <td>{{ produit.categorie ? produit.categorie.nom: '' }}</td>
           <td class="designation">{{ produit.designation }}</td>
-          <td class="primary">{{ produit.prix }}</td>
+          <td>{{ produit.prix }}</td>
           <td>{{ produit.stock }}</td>
-          <td><fa-icon (click)="onChangeProduit(produit)" [icon]="faSync"></fa-icon></td>
+          <td class="primary"><fa-icon (click)="onChangeProduit(produit)" [icon]="faSync"></fa-icon></td>
           <td class="danger-1"><fa-icon style="padding-right: 5px;text-align: center" [icon]="faTrashAlt"></fa-icon></td>
         </tr>
         </tbody>
@@ -50,12 +50,12 @@
                    <span class="icon"><fa-icon [icon]="faChevronDown"></fa-icon></span>
                  </div>
                  <div class="page">
-                   <div> {{ 1 + ' - ' + size + ' de ' + totalElements }}</div>
+                   <div> {{ (currentPage * size) + 1 + ' - ' + (((currentPage * size) + size) < totalElements ? ((currentPage * size) + size): (totalElements)) + ' de ' + totalElements }}</div>
                    <div>
                      <span [ngClass]="currentPage -1 < 0 ? 'disabled': ''">
                        <a (click)="changePage(-1)"><fa-icon [icon]="faChevronLeft"></fa-icon></a>
                      </span>
-                     <span><a>{{ currentPage }}</a></span>
+                     <span><a>{{ currentPage+1 }}</a></span>
                      <span [ngClass]="currentPage + 1 >= totalPages.length ? 'disabled': ''">
                        <a (click)="changePage(1)"><fa-icon [icon]="faChevronRight"></fa-icon></a>
                      </span>

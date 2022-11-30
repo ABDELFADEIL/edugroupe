@@ -1,0 +1,47 @@
+  <div *ngIf="!validated && produit" class="form-produit">
+    <form class="form" #f="ngForm" (ngSubmit)="onSubmit(f.value)" ngNativeValidate>
+      <h3>Ajouter/mettre à jour un produit</h3>
+      <div class="row100">
+        <div class="inputBox">
+          <span>Nom</span>
+          <input type="text" name="nom" required="required" [(ngModel)]="produit.nom">
+        </div>
+        <div class="inputBox category" *ngIf="categories.length > 0">
+          <span>Categorie</span>
+            <select id='select' [(ngModel)]="selectedCategorie" name='categorie' (ngModelChange)="changeCategorie()">
+                <option *ngIf="selectedCategorie" [ngValue]="selectedCategorie">{{ selectedCategorie.nom }}</option>
+                <option *ngFor="let cat of categories" [ngValue]="cat" >
+                  {{ cat.nom }}
+                </option>
+            </select>
+            <span class="icon-category"><fa-icon [icon]="faChevronDown"></fa-icon></span>
+        </div>
+      </div>
+      <div class="row100">
+        <div class="inputBox">
+          <span>Prix</span>
+          <input type="text" name="prix" required="required" [(ngModel)]="produit.prix">
+        </div>
+        <div class="inputBox">
+          <span>Stock</span>
+          <input type="text" name="stock" required="required" [(ngModel)]="produit.stock">
+        </div>
+      </div>
+      <div class="row100" id="image-url-box">
+        <div class="inputBox">
+          <span>Url de l'image</span>
+          <input type="text" name="imageUrl" required="required" [(ngModel)]="produit.imageUrl">
+        </div>
+      </div>
+      <div class="row100">
+        <div class="inputBox">
+          <span>Designation</span>
+          <textarea name="designation" required="required" [(ngModel)]="produit.designation"></textarea>
+        </div>
+      </div>
+      <div class="btn-send">
+        <input type="submit" value="Envoyer">
+        <input type="button" value="Annuler" (click)="closeForm()">
+      </div>
+    </form>
+  </div>
