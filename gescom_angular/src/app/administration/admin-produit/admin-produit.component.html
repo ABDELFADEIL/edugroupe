@@ -4,14 +4,20 @@
     <div *ngIf="updateAdd" class="form-produit">
       <form-produit [produit]="produit" (addUpdateEvent)="setUpdateAdd($event)"></form-produit>
     </div>
+
     <div class="table-produits">
       <div class="top-table">
         <h3>List de produits</h3>
-        <div class="add-product" *ngIf="!updateAdd">
-          <a (click)="onChangeProduit(undefined)"><fa-icon [icon]="faPlus"></fa-icon><span>Ajouter</span></a>
+        <div class="sarch-add">
+          <div class="search">
+            <input type="text" name="keyword" id="search" #search (keyup)="searchProduits(search.value)" placeholder="Chercher...">
+          </div>
+          <div class="add-product" *ngIf="!updateAdd">
+            <a (click)="onChangeProduit(undefined)"><fa-icon [icon]="faPlus"></fa-icon><span>Ajouter</span></a>
+          </div>
         </div>
       </div>
-      <table>
+      <table *ngIf="(produits$ | async) as products">
         <thead>
         <tr>
           <th>Id</th>
@@ -25,10 +31,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let produit of produits; let i=index;">
+        <tr *ngFor="let produit of products.content; let i=index;">
           <td>{{ produit.id }}</td>
           <td>{{ produit.nom }}</td>
-          <td>{{ produit.categorie ? produit.categorie.nom: '' }}</td>
+          <td>{{ produit.categorie ? produit.categorie.nom: ''   }}</td>
           <td class="designation">{{ produit.designation }}</td>
           <td>{{ produit.prix }}</td>
           <td>{{ produit.stock }}</td>
@@ -38,7 +44,7 @@
         </tbody>
         <tfoot>
            <tr>
-             <td colspan="6">
+             <td colspan="8">
                <div class="pagination" >
                  <div class="size">
                    <select id='size' [(ngModel)]="size" name='size' (ngModelChange)="changePageSize()">

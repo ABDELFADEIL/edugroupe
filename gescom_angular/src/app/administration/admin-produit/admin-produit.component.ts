@@ -5,6 +5,20 @@ import {faArrowAltCircleUp, faPlus} from "@fortawesome/free-solid-svg-icons";
 import { faChevronDown, faChevronRight, faChevronLeft, faTrashAlt, faSyncAlt } from "@fortawesome/free-solid-svg-icons";
 import {Categorie} from "../../produits/categorie";
 import {CategorieService} from "../../produits/categorie.service";
+import {
+  debounceTime,
+  distinctUntilChanged,
+  Observable,
+  Subject,
+  switchMap,
+  tap,
+  pipe,
+  mergeMap,
+  concatMap,
+  AsyncSubject, of, BehaviorSubject, map
+} from "rxjs";
+import {AnonymousSubject} from "rxjs/internal/Subject";
+import {ApiResponse} from "../../models/apiResponse";
 
 @Component({
   selector: 'app-admin-produit',
@@ -24,49 +38,60 @@ export class AdminProduitComponent implements OnInit, OnChanges{
   totalPages: number [] = [];
   totalElements: number = 0;
   updateAdd: boolean = false;
+  wordSubject = new  BehaviorSubject<string>('');
+  produits$: Observable<ApiResponse<Produit>> = of(<ApiResponse<Produit>>{});
   @Output() onChange:EventEmitter<Produit> = new EventEmitter();
   produit: Produit | undefined;
-
   private categories: Categorie[] = [];
-  categorieName: any;
+  private keyword: string = '';
 
   constructor(private produitService: ProduitService,
               private categorieService: CategorieService) {
   }
 
   ngOnInit(): void {
-    this.getProduits();
+    this.produits$  = this.wordSubject.pipe(
+      debounceTime(1000),
+      //distinctUntilChanged(),
+      tap( word=> console.log(word)),
+      switchMap((word, index)=> {
+        this.keyword = word;
+        return this.getProduitsObservable();
+      }),
+      map(response=> {
+        this.size = response.size;
+        this.currentPage = response.number;
+        this.totalElements = response.totalElements;
+        this.totalPages = Array.from(Array(response.totalPages).keys());
+        return response
+      })
+    );
+
+    console.log(this.produits$);
     this.getAllCategories();
   }
 
-  getProduits(){
-    this.produitService.getProduits({page: this.currentPage, size: this.size}).subscribe(
-      response => {
-        if(!!response){
-          this.produits = response.content;
-          this.size = response.size;
-          this.currentPage = response.number;
-          this.totalPages = Array.from(Array(response.totalPages).keys());
-          this.totalElements = response.totalElements;
-          console.log('size= ', this.size);
-          console.log('currentPage= ', this.currentPage);
-          console.log('totalPages= ', this.totalPages);
-          console.log(this.produits);
-        }
-
-      }
-    )
+  getProduitsObservable() :Observable<ApiResponse<Produit>>{
+    console.log(this.currentPage);
+    console.log(this.size);
+    return this.produitService.getProduitsByKeyWord({page: this.currentPage, size: this.size}, this.keyword);
   }
 
   changePageSize() {
     console.log(this.size);
-    this.getProduits();
+    this.searchProduits(this.keyword);
+    this.getProduitsObservable();
   }
   changePage(page:number) {
     console.log(this.size);
+    console.log(this.currentPage + page >= 0 && this.currentPage + page < this.totalPages.length);
+    console.log(this.currentPage);
+    console.log(this.totalPages)
     if (this.currentPage + page >= 0 && this.currentPage + page < this.totalPages.length){
       this.currentPage += page;
-      this.getProduits();
+      //this.getInitialProducts();
+      this.searchProduits(this.keyword);
+      this.getProduitsObservable();
     }
   }
 
@@ -96,5 +121,12 @@ export class AdminProduitComponent implements OnInit, OnChanges{
   setUpdateAdd(updateAdd: boolean){
     this.updateAdd = updateAdd;
     console.log(this.updateAdd);
+  }
+
+  searchProduits(searchWord: string) {
+    console.log(searchWord);
+    this.wordSubject.next(searchWord);
+    console.log(this.wordSubject);
+    //this.currentPage = 0;
   }
 }

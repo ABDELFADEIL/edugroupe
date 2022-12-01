@@ -5,6 +5,7 @@ import {catchError, Observable, of, tap} from "rxjs";
 import {Produit} from "./produit";
 import {AuthService} from "../authentication/auth.service";
 import {AdminDashboardModule} from "../administration/admin-dashboard.module";
+import {ApiResponse} from "../models/apiResponse";
 
 @Injectable()
 export class ProduitService implements OnInit{
@@ -39,5 +40,15 @@ export class ProduitService implements OnInit{
           console.log(response);
         }),
         catchError(err => of(err)))
+  }
+
+  getProduitsByKeyWord(param: { size: number; page: number }, word:string) :Observable<ApiResponse<Produit>>{
+    console.log('getProduitsByKeyWord');
+    return this.http.get<any>(API_URL + 'produits/keyword?page=' + param.page + '&size=' + param.size + '&keyword=' + word )
+      .pipe(
+        tap((response:any) => {
+          console.log(response);
+        }),
+        catchError(err => of(err)));
   }
 }
