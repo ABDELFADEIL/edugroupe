@@ -1,17 +1,17 @@
 package com.edugroupe.gestionstock_springboot.service;
 
 import com.edugroupe.gestionstock_springboot.dao.RoleRepository;
+import com.edugroupe.gestionstock_springboot.dao.UserProfileUpdate;
 import com.edugroupe.gestionstock_springboot.dao.UtilisateurRepository;
 import com.edugroupe.gestionstock_springboot.dto.UtilisateurDto;
 import com.edugroupe.gestionstock_springboot.entity.Role;
 import com.edugroupe.gestionstock_springboot.entity.Utilisateur;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Service
 public class UtilisateurServiceImpl implements IUtilisateurService {
@@ -81,4 +81,81 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
         }
         return utilisateur;
     }
+
+    @Override
+    public Page<Utilisateur> findByNomOrDesignationContains(Pageable pageable, String keyword) {
+        return utilisateurRepository.findByNomContainsOrPrenomContains(pageable, keyword, keyword);
+    }
+
+    @Override
+    public Utilisateur saveUser(Utilisateur utilisateur) {
+        List<Role> roles = new ArrayList<>();
+        utilisateur.getRoles().forEach(role -> {
+            Role role1 = roleRepository.findByRoleName(role.getRoleName());
+            if(role1 != null){
+                roles.add(role1);
+            }
+        });
+        utilisateur.setRoles(roles);
+        if (utilisateur.getId() == 0){
+            utilisateur.setPassword(bCryptPasswordEncoder.encode("password"));
+            return utilisateurRepository.save(utilisateur);
+        } else {
+            Optional<Utilisateur> optionalUtilisateur =
+                    utilisateurRepository.findById(utilisateur.getId());
+            if (optionalUtilisateur.isPresent()){
+                Utilisateur user = optionalUtilisateur.get();
+                if (!Objects.equals(utilisateur.getNom(), user.getNom())){
+                    user.setNom(utilisateur.getNom());
+                }
+                if (!Objects.equals(utilisateur.getPrenom(), user.getPrenom())){
+                    user.setPrenom(utilisateur.getPrenom());
+                }
+                if (!Objects.equals(utilisateur.getEmail(), user.getEmail())){
+                    user.setEmail(utilisateur.getEmail());
+                }
+                if (!Objects.equals(utilisateur.getDateNaissance(), user.getDateNaissance())){
+                    user.setDateNaissance(utilisateur.getDateNaissance());
+                }
+                if (!Objects.equals(utilisateur.getAdresse(), user.getAdresse())){
+                    user.setAdresse(utilisateur.getAdresse());
+                }
+               return utilisateurRepository.save(user);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public boolean deleteUserById(Integer userId) {
+        if (utilisateurRepository.existsById(userId)) {
+            utilisateurRepository.deleteById(userId);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Utilisateur findByEmail(String email) {
+        return utilisateurRepository.findByEmail(email);
+    }
+
+    @Override
+    public Utilisateur updateProfile(UserProfileUpdate profileUpdate, Integer utlisateurId) {
+        Utilisateur utilisateur = utilisateurRepository.findById(utlisateurId).orElse(null);
+        if (utilisateur == null){
+            return null;
+        }
+        if (Objects.equals(profileUpdate.getFieldName(), "email")){
+            utilisateur.setEmail(profileUpdate.getValue());
+        }
+        if (Objects.equals(profileUpdate.getFieldName(), "address")){
+            utilisateur.setAdresse(profileUpdate.getValue());
+        }
+        if (Objects.equals(profileUpdate.getFieldName(), "password")){
+            utilisateur.setPassword(bCryptPasswordEncoder.encode(profileUpdate.getValue()));
+        }
+        return utilisateurRepository.save(utilisateur);
+    }
+
 }

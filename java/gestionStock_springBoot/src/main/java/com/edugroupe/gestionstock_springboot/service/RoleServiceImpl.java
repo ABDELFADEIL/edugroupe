@@ -2,9 +2,11 @@ package com.edugroupe.gestionstock_springboot.service;
 
 import com.edugroupe.gestionstock_springboot.dao.RoleRepository;
 import com.edugroupe.gestionstock_springboot.entity.Role;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class RoleServiceImpl implements IRoleService{
 
     private final RoleRepository roleRepository;
@@ -16,7 +18,7 @@ public class RoleServiceImpl implements IRoleService{
 
     @Override
     public List<Role> findAll() {
-        return null;
+        return roleRepository.findAll();
     }
 
     @Override

@@ -28,7 +28,7 @@ public class Produit implements Serializable {
     private String imageUrl;
     @ManyToOne
     @JoinColumn(name = "categorie_id")
-    @JsonManagedReference
+
     private Categorie categorie;
 
 
