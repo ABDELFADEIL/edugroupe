@@ -30,7 +30,7 @@ public class CustomUserDetailsService  implements UserDetailsService {
         if(u==null) throw new UsernameNotFoundException(email);
         Collection<GrantedAuthority> authorities=new ArrayList<>();
         u.getRoles().forEach(r->{
-            authorities.add(new SimpleGrantedAuthority(r.getRoleName()));
+            authorities.add(new SimpleGrantedAuthority(r.getAuthority()));
         });
         return new org.springframework.security.core.userdetails.User(u.getEmail(), u.getPassword(), authorities);
     }

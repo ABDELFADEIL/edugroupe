@@ -1,0 +1,20 @@
+
+j
+java:S20951"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(„‘ª€øÿÿÿÿ
+b
+java:S2095\"GUse try-with-resources or close this "Statement" in a "finally" clause.(é°Áµþÿÿÿÿ
+l
+java:S2095G"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ôöšª8¨ýË‰Ï0
+b
+java:S2095C"GUse try-with-resources or close this "Statement" in a "finally" clause.(é°Áµþÿÿÿÿ
+e
+java:S2095t"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ôöšª
+j
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(„‘ª€øÿÿÿÿ
+N	java:S106$"9Replace this use of System.out or System.err by a logger.(Š¢Ø¶
+X
+java:S1854C"=Remove this useless assignment to local variable "statement".(é°Áµþÿÿÿÿ
+I
+java:S1481C".Remove this unused "statement" local variable.(é°Áµþÿÿÿÿ
+R
+java:S1128"0Remove this unused import 'java.time.LocalDate'.(›‘¬èýÿÿÿÿ8¨ì­•Ï0

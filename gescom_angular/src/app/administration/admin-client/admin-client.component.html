@@ -1,8 +1,85 @@
-<div class="container admin-page">
-  <div>
-    <app-admin-menu></app-admin-menu>
-  </div>
+<div class="admin-page">
+  <app-admin-menu></app-admin-menu>
   <main class="admin-main">
-    <p>admin-dashboard clients</p>
+
+    <div class="table-produits">
+      <div class="top-table">
+        <h3>List de produits</h3>
+        <div class="sarch-add">
+          <div class="search">
+            <input type="text" name="keyword" id="search" #search (keyup)="searchClients(search.value)" placeholder="Chercher...">
+          </div>
+          <div class="add-product" *ngIf="!updateAdd">
+            <a (click)="toggleModal(undefined)"><fa-icon [icon]="faPlus"></fa-icon><span>Ajouter</span></a>
+          </div>
+        </div>
+      </div>
+      <table *ngIf="(clients$ | async) as clients">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Date naissance</th>
+          <th>Email</th>
+          <th>Adresse</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let client of clients.content; let i=index;">
+        <tr>
+          <td>{{ client.id }}</td>
+          <td>{{ client.nom }}</td>
+          <td>{{ client.prenom   }}</td>
+          <td>{{ client.dateNaissance }}</td>
+          <td>{{ client.email }}</td>
+          <td>{{ client.adresse }}</td>
+          <td style="text-align: right;padding-right: 20px;">
+            <fa-icon class="primary" (click)="toggleModal(client)" [icon]="faSync"></fa-icon>
+            <fa-icon class="danger-1" (click)="deleteProduct(client.id)" style="margin-left: 15px" [icon]="faTrashAlt"></fa-icon>
+          </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="8">
+            <div class="pagination" >
+              <div class="size">
+                <select id='size' [(ngModel)]="size" name='size' (ngModelChange)="changePageSize()">
+                  <option value='10' [ngValue]="10">10</option>
+                  <option value='20' [ngValue]="20">20</option>
+                  <option value='50' [ngValue]="50">50</option>
+                  <option value='50' [ngValue]="100">100</option>
+                </select>
+                <span class="icon"><fa-icon [icon]="faChevronDown"></fa-icon></span>
+              </div>
+              <div class="page">
+                <div> {{ (currentPage * size) + 1 + ' - ' + (((currentPage * size) + size) < totalElements ? ((currentPage * size) + size): (totalElements)) + ' de ' + totalElements }}</div>
+                <div>
+                     <span [ngClass]="currentPage -1 < 0 ? 'disabled': ''">
+                       <a (click)="changePage(-1)"><fa-icon [icon]="faChevronLeft"></fa-icon></a>
+                     </span>
+                  <span><a>{{ currentPage+1 }}</a></span>
+                  <span [ngClass]="currentPage + 1 >= totalPages.length ? 'disabled': ''">
+                       <a (click)="changePage(1)"><fa-icon [icon]="faChevronRight"></fa-icon></a>
+                     </span>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
   </main>
+</div>
+
+<div (click)="closeModal($event)" class="modal" id="modal">
+  <div class="modal-content">
+    <div (click)="toggleModal(undefined)" class="modal-close">&times;</div>
+    <div class="form-produit">
+      <form-client [utilisateur]="utilisateur"
+                    (toggleModal)="toggleModal(undefined)"></form-client>
+    </div>
+  </div>
 </div>

@@ -55,7 +55,9 @@ main .table-produits table thead th {
 main .table-produits table thead tr th:nth-last-child(1),
 main .table-produits table tbody tr td:nth-last-child(1)
 {
+/*   text-align: right; */
   text-align: right;
+  padding-right: 20px;
 }
 main .table-produits table thead tr {
   background-color: var(--color-background);
@@ -183,3 +185,4 @@ td.designation{
   padding: var(--padding-1);
 
 }
+

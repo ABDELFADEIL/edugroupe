@@ -1,11 +1,10 @@
 <div class="container">
   <div class="produits">
-      <ul class="sidebar">
-        <li><a>Catégories</a></li>
-        <li><a>Vêtements</a></li>
-        <li><a>Chaussures</a></li>
-        <li><a>Parfums</a></li>
-        <li><a>Beauté & soins de corps</a></li>
+      <ul class="sidebar" *ngIf="categories">
+        <li><a (click)="getProduct()">Catégories</a></li>
+        <li *ngFor="let categorie of categories">
+          <a (click)="getProductByCategorie(categorie.id)">{{ categorie.nom }}</a>
+        </li>
       </ul>
     <div class="produits-cards">
       <!-- Start product card -->

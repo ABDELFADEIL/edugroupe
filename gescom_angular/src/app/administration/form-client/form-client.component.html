@@ -1,0 +1,52 @@
+<div *ngIf="!validated && utilisateur" class="form-produit">
+  <form class="form" #f="ngForm" (ngSubmit)="onSubmit(f.value)" ngNativeValidate>
+    <h3>Ajouter/mettre à jour un produit</h3>
+    <div class="row100">
+      <div class="inputBox">
+        <span>Nom</span>
+        <input type="text" name="nom" required="required" [(ngModel)]="utilisateur.nom">
+      </div>
+      <div class="inputBox">
+        <span>Nom</span>
+        <input type="text" name="prenom" required="required" [(ngModel)]="utilisateur.prenom">
+      </div>
+    </div>
+    <div class="row100">
+      <div class="inputBox">
+        <span>Date de naissance</span>
+        <input type="date" name="dateNaissance" required="required" [(ngModel)]="utilisateur.dateNaissance">
+      </div>
+      <div class="inputBox">
+        <span>Email</span>
+        <input type="text" name="email" required="required" [(ngModel)]="utilisateur.email">
+      </div>
+    </div>
+    <div class="row100" id="image-url-box">
+      <div class="inputBox">
+        <span>Adresse</span>
+        <input type="text" name="adresse" required="required" [(ngModel)]="utilisateur.adresse">
+      </div>
+    </div>
+    <div class="row100">
+      <div class="inputBox">
+        <span>Email</span>
+        <input type="text" name="email" required="required" [(ngModel)]="utilisateur.email"/>
+      </div>
+      <div class="inputBox category" *ngIf="roles">
+        <span>Role</span>
+        <select id='select' [(ngModel)]="selectedRole" name='role' (ngModelChange)="changeRole()">
+          <!--           <option *ngIf="selectedRole" [ngValue]="selectedRole">{{ selectedRole.roleName }}</option>
+         -->
+          <option *ngFor="let role of roles" [value]="role">
+            {{ role.authority }}
+          </option>
+        </select>
+        <span class="icon-category"><fa-icon [icon]="faChevronDown"></fa-icon></span>
+      </div>
+    </div>
+    <div class="btn-send">
+      <input type="submit" value="Envoyer">
+      <input type="button" value="Annuler"  (click)="closeModal()">
+    </div>
+  </form>
+</div>

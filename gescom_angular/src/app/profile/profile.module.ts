@@ -4,11 +4,12 @@ import {Routes, RouterModule} from "@angular/router";
 import {ProfileComponent} from "./profile/profile.component";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {AuthService} from "../authentication/auth.service";
+import {AuthGuard} from "../authentication/guard/auth.guard";
 
 
 
 const profileRoutes: Routes = [
-  {path: 'profile', component: ProfileComponent}
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] }
 ]
 @NgModule({
   declarations: [

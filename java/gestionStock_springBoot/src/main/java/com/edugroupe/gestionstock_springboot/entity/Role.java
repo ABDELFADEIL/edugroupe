@@ -20,10 +20,10 @@ public class Role implements Serializable, GrantedAuthority {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "role_name", nullable = false)
-    private String roleName;
+    private String authority;
 
     @Override
     public String getAuthority() {
-        return this.roleName;
+        return this.authority;
     }
 }

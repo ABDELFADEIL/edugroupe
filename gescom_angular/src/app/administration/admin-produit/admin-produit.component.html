@@ -1,9 +1,6 @@
 <div class="admin-page">
     <app-admin-menu></app-admin-menu>
   <main class="admin-main">
-    <div *ngIf="updateAdd" class="form-produit">
-      <form-produit [produit]="produit" (addUpdateEvent)="setUpdateAdd($event)"></form-produit>
-    </div>
 
     <div class="table-produits">
       <div class="top-table">
@@ -13,33 +10,35 @@
             <input type="text" name="keyword" id="search" #search (keyup)="searchProduits(search.value)" placeholder="Chercher...">
           </div>
           <div class="add-product" *ngIf="!updateAdd">
-            <a (click)="onChangeProduit(undefined)"><fa-icon [icon]="faPlus"></fa-icon><span>Ajouter</span></a>
+            <a (click)="toggleModal(undefined)"><fa-icon [icon]="faPlus"></fa-icon><span>Ajouter</span></a>
           </div>
         </div>
       </div>
       <table *ngIf="(produits$ | async) as products">
         <thead>
         <tr>
-          <th>Id</th>
+          <th>Image</th>
           <th>Nom</th>
           <th>Category</th>
           <th>Designation</th>
           <th>Prix</th>
           <th>Stock</th>
-          <th></th>
-          <th></th>
+          <th>Actions</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let produit of products.content; let i=index;">
-          <td>{{ produit.id }}</td>
+          <td style="width:60px; height:40px;"><img
+            [src]="produit.imageUrl" alt="" height="25"></td>
           <td>{{ produit.nom }}</td>
           <td>{{ produit.categorie ? produit.categorie.nom: ''   }}</td>
           <td class="designation">{{ produit.designation }}</td>
           <td>{{ produit.prix }}</td>
           <td>{{ produit.stock }}</td>
-          <td class="primary"><fa-icon (click)="onChangeProduit(produit)" [icon]="faSync"></fa-icon></td>
-          <td class="danger-1"><fa-icon style="padding-right: 5px;text-align: center" [icon]="faTrashAlt"></fa-icon></td>
+          <td style="text-align: right;padding-right: 20px;">
+           <fa-icon class="primary" (click)="toggleModal(produit)" [icon]="faSync"></fa-icon>
+           <fa-icon class="danger-1" (click)="deleteProduct(produit.id)" style="margin-left: 15px" [icon]="faTrashAlt"></fa-icon>
+          </td>
         </tr>
         </tbody>
         <tfoot>
@@ -76,4 +75,13 @@
 
     </div>
   </main>
+</div>
+<div (click)="closeModal($event)" class="modal" id="modal">
+  <div class="modal-content">
+    <div (click)="toggleModal(undefined)" class="modal-close">&times;</div>
+    <div class="form-produit">
+      <form-produit [produit]="produit"
+                    (toggleModal)="toggleModal(undefined)"></form-produit>
+    </div>
+</div>
 </div>

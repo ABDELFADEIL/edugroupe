@@ -12,16 +12,26 @@ export class ProduitService implements OnInit{
 
   constructor(private http: HttpClient) { }
 
-  getProduits({page = 0, size = 1000000} = {}) :Observable<any>{
-    return this.http.get<any>(API_URL + 'produits?page=' + page + '&size=' + size )
-      .pipe(
-        tap((response:any) => {
-          console.log(response);
-        }),
-        catchError(err => of(err)))
+  ngOnInit(): void {
   }
 
-  ngOnInit(): void {
+  getProductsByKeyWordPagination(param: { size?: number; page?: number; keyword?:string }, categoryId?: number) :Observable<ApiResponse<Produit>>{
+    console.log('getProduitsByKeyWord');
+    if (!!categoryId){
+      return this.http.get<any>(API_URL + 'produits/category?categoryId=' + categoryId+ '&page=' + param.page + '&size=' + param.size + '&keyword=' + param.keyword )
+        .pipe(
+          tap((response:any) => {
+            console.log(response);
+          }),
+          catchError(err => of(err)));
+    }else {
+      return this.http.get<any>(API_URL + 'produits?page=' + param.page + '&size=' + param.size + '&keyword=' + param.keyword )
+        .pipe(
+          tap((response:any) => {
+            console.log(response);
+          }),
+          catchError(err => of(err)));
+    }
   }
 
   getProduitById(idProduit: number) :Observable<Produit>{
@@ -42,13 +52,13 @@ export class ProduitService implements OnInit{
         catchError(err => of(err)))
   }
 
-  getProduitsByKeyWord(param: { size: number; page: number }, word:string) :Observable<ApiResponse<Produit>>{
-    console.log('getProduitsByKeyWord');
-    return this.http.get<any>(API_URL + 'produits/keyword?page=' + param.page + '&size=' + param.size + '&keyword=' + word )
+  deleteProduct(productId: number) :Observable<Produit>{
+    return this.http.delete<Produit[]>(API_URL + 'produits/' + productId)
       .pipe(
         tap((response:any) => {
           console.log(response);
         }),
-        catchError(err => of(err)));
+        catchError(err => of(err)))
   }
+
 }

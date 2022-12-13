@@ -6,14 +6,15 @@
           <span>Nom</span>
           <input type="text" name="nom" required="required" [(ngModel)]="produit.nom">
         </div>
-        <div class="inputBox category" *ngIf="categories.length > 0">
+        <div class="inputBox category" *ngIf="categories$ | async as categories">
           <span>Categorie</span>
-            <select id='select' [(ngModel)]="selectedCategorie" name='categorie' (ngModelChange)="changeCategorie()">
-                <option *ngIf="selectedCategorie" [ngValue]="selectedCategorie">{{ selectedCategorie.nom }}</option>
-                <option *ngFor="let cat of categories" [ngValue]="cat" >
-                  {{ cat.nom }}
-                </option>
-            </select>
+          <select id='select' [(ngModel)]="selectedCategorie" name='categorie' (ngModelChange)="changeCategorie()">
+            <option *ngIf="selectedCategorie" [ngValue]="selectedCategorie">{{ selectedCategorie.nom }}</option>
+            <option *ngFor="let cat of categories" [ngValue]="cat" >
+              {{ cat.nom }}
+            </option>
+          </select>
+          <p *ngIf="selectedCategorie">{{ selectedCategorie.nom }}</p>
             <span class="icon-category"><fa-icon [icon]="faChevronDown"></fa-icon></span>
         </div>
       </div>
@@ -41,7 +42,7 @@
       </div>
       <div class="btn-send">
         <input type="submit" value="Envoyer">
-        <input type="button" value="Annuler" (click)="closeForm()">
+        <input type="button" value="Annuler"  (click)="closeModal()">
       </div>
     </form>
   </div>

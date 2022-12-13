@@ -16,25 +16,25 @@
       <p>Date de naissance: <span id="dateNaissance">{{ user.dateNaissance }}</span></p>
       <div>
         <p>Email: <span id="email">{{ user.email }}</span>
-          <a onclick="updateEmail()">
+          <a (click)="updateEmail()">
             <fa-icon [icon]="faPencilRuler"></fa-icon>
           </a>
         </p>
       </div>
-      <div class="inputBoxUpdate" id="updateEmail">
-        <input id="emailInput" type="text" name="email" required="required">
-        <span onclick="sendUpdateEmail()">Envoyer</span>
+      <div [hidden]="displayEmail" class="inputBoxUpdate" id="updateEmail">
+        <input #email id="emailInput" [value]="user.email" type="text" name="email" required="required">
+        <span (click)="sendUpdateEmail(email.value)">Envoyer</span>
       </div>
       <div>
         <p>Adresse: <span id="adresse">{{ user.adresse }}</span>
-          <a onclick="updateAddress()">
+          <a (click)="updateAddress()">
             <fa-icon [icon]="faPencilRuler"></fa-icon>
           </a>
         </p>
       </div>
-      <div class="inputBoxUpdate" id="updateAddress">
-        <input id="addressInput" type="text" name="adresse" required="required">
-        <span onclick="sendUpdateAddress()">Envoyer</span>
+      <div [hidden]="displayAddress" class="inputBoxUpdate" id="updateAddress">
+        <input #address id="addressInput" [value]="user.adresse" type="text" name="adresse" required="required">
+        <span (click)="sendUpdateAddress(address.value)">Envoyer</span>
       </div>
     </div>
   </section>

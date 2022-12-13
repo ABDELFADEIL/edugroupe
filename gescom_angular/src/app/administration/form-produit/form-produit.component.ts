@@ -4,6 +4,7 @@ import {Categorie} from "../../produits/categorie";
 import {ProduitService} from "../../produits/produit.service";
 import {CategorieService} from "../../produits/categorie.service";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'form-produit',
@@ -12,26 +13,21 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 })
 export class FormProduitComponent implements OnInit, OnChanges{
 
-  @Output() addUpdateEvent = new EventEmitter<boolean>;
+  @Output() toggleModal = new EventEmitter<MouseEvent>();
   @Input() produit: Produit | undefined;
   validated: boolean = false;
-  categories: Categorie [] = [];
+  categories$: Observable<Categorie[]> | undefined;
   selectedCategorie: Categorie | undefined;
   faChevronDown = faChevronDown;
   constructor(private produitService: ProduitService, private categorieService: CategorieService) {
   }
   ngOnInit(): void {
-    this.getAllCategories();
-    if(this.produit){
+    this.categories$ = this.categorieService.getCategories();
+    if(!!this.produit && this.produit?.id != 0){
       this.selectedCategorie = this.produit.categorie;
-      console.log('produit not null');
-      console.log(this.produit);
-      console.log(this.selectedCategorie);
-      console.log(this.produit);
-      console.log(this.selectedCategorie);
     }else{
       this.produit = new Produit();
-      this.selectedCategorie = this.categories[0];
+      //this.selectedCategorie = this.categories[0];
     }
 
 
@@ -44,17 +40,8 @@ export class FormProduitComponent implements OnInit, OnChanges{
     this.produitService.updateAddProduit(this.produit).subscribe(
       (response)=> {
         console.log(response);
-        this.addUpdateEvent.emit(false);
+        this.closeModal();
       }
-    )
-  }
-
-  getAllCategories(){
-    this.categorieService.getCategories().subscribe(
-     (response)=> {
-        this.categories = response;
-        console.log(this.categories);
-    }
     )
   }
 
@@ -62,7 +49,7 @@ export class FormProduitComponent implements OnInit, OnChanges{
   changeCategorie() {
     console.log(this.selectedCategorie);
     if(this.produit)
-    this.produit.categorie = this.selectedCategorie;
+    this.produit.categorie = this.selectedCategorie
     console.log(this.produit);
   }
 
@@ -70,7 +57,6 @@ export class FormProduitComponent implements OnInit, OnChanges{
     console.log(changes);
     if (changes['produit'].currentValue == undefined){
       this.produit = new Produit();
-      this.selectedCategorie = this.categories[0];
     } else {
       this.produit = changes['produit'].currentValue;
       this.selectedCategorie = this.produit?.categorie;
@@ -78,8 +64,8 @@ export class FormProduitComponent implements OnInit, OnChanges{
     console.log(this.produit);
     console.log(this.selectedCategorie);
   }
-  closeForm(){
-    this.produit = undefined;
-    this.addUpdateEvent.emit(false);
+
+  closeModal() {
+    this.toggleModal.emit();
   }
 }

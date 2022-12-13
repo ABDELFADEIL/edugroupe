@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { faUserCircle, faPencilAlt, faList } from '@fortawesome/free-solid-svg-icons';
 import {AuthService} from "../../authentication/auth.service";
 import {User} from "../../authentication/user";
+import {UtilisateurService} from "../../administration/admin-client/service/utilisateur.service";
 
 
 @Component({
@@ -15,7 +16,10 @@ export class ProfileComponent implements OnInit{
   faPencilRuler = faPencilAlt;
   faList = faList;
   user: User | undefined;
-  constructor(private authService: AuthService) {
+  displayEmail: boolean = true;
+  displayAddress: boolean = true;
+
+  constructor(private authService: AuthService, private utilisateurService: UtilisateurService) {
   }
 
   ngOnInit(): void {
@@ -34,7 +38,30 @@ export class ProfileComponent implements OnInit{
     }
   }
 
-  sendUpdateAddress(){}
+   updateEmail(){
+    this.displayEmail = !this.displayEmail;
+     this.displayAddress = true;
 
-  sendUpdateEmail(){}
+  }
+  updateAddress() {
+    this.displayAddress =!this.displayAddress;
+    this.displayEmail = true;
+  }
+  sendUpdateAddress(address: string){
+    this.utilisateurService.updateProfile("address", address).subscribe(
+      (response: any)=> {
+        console.log(response);
+        this.displayAddress = true;
+      }
+    )
+  }
+
+  sendUpdateEmail(email: string){
+    this.utilisateurService.updateProfile("email", email).subscribe(
+      (response: any)=> {
+        console.log(response);
+        this.displayEmail = true;
+      }
+    )
+  }
 }

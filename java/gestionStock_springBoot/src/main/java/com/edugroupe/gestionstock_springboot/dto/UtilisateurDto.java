@@ -34,8 +34,8 @@ public class UtilisateurDto {
 
     public static UtilisateurDto toUtilisateurDto(Utilisateur utilisateur){
         String roleName = utilisateur.getRoles().stream()
-                .filter(role -> role.getRoleName().equals("ADMIN"))
-                .findFirst().orElse(null).getRoleName();
+                .filter(role -> role.getAuthority().equals("ADMIN"))
+                .findFirst().orElse(null).getAuthority();
         roleName = roleName.equals("ADMIN") ? "ADMIN" : "USER";
         return new UtilisateurDto(
                 utilisateur.getId(),

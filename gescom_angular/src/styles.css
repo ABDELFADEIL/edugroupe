@@ -140,6 +140,9 @@ b
 {
   color: var(--color-danger-1);
 }
+fa-icon {
+  cursor: pointer;
+}
 aside
 {
   height: 100vh;
@@ -432,6 +435,7 @@ body {
 .profile-info p span {
   font-weight: 500;
   font-size: 1.1rem;
+  margin-right: 10px;
 
 }
 .fa.fa-pencil {
@@ -473,7 +477,7 @@ body {
   cursor: pointer;
 }
 #updateAddress, #updateEmail{
-  display: none;
+  /*display: none;*/
 }
 .aside .row {
   cursor: pointer;
@@ -504,8 +508,11 @@ body {
 }
 .produits .sidebar li {
   border-radius: 4px;
+  margin-bottom: .50rem;
+  cursor: pointer;
 }
 .produits .sidebar  a {
+  display: block;
   line-height: 50px;
   margin-left: 10px;
 }
@@ -766,3 +773,89 @@ body {
 
 }
 
+
+/*
+ Start modal style
+ */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  overflow: auto;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal .modal-content {
+  position: absolute;
+  width: auto;
+  height: auto;
+  background: rgb(226 227 240 / 1);
+  margin: 2rem;
+  padding: 2rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, .25);
+}
+.modal.modal-show {
+  animation: fadeIn 0.1s ease-in-out forwards;
+}
+.modal.modal-hide {
+  animation: fadeOut 0.1s ease-in-out 0.1s forwards;
+}
+.modal.modal-show .modal-content {
+  animation: fadeInDown 0.3s ease-in-out forwards;
+}
+.modal.modal-hide .modal-content {
+  animation: fadeOutUp 0.2s ease-in-out forwards;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.75rem;
+  font-weight: bold;
+  padding: 0 0.75rem;
+  color: rgba(0,0,0,0.2);
+  cursor: pointer;
+  user-select: none;
+}
+.modal-close:hover, .modal-close:focus {
+  color: rgba(0,0,0,0.5);
+}
+.modal.modal-show .modal-content {
+  animation: fadeInDown 0.3s ease-in-out forwards;
+}
+.modal.modal-hide .modal-content {
+  animation: fadeOutUp 0.2s ease-in-out forwards;
+}
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeOutUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+}
+
+/*
+fin modal style
+ */

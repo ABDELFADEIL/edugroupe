@@ -3,6 +3,9 @@ import {API_URL} from "../api_params";
 import {catchError, Observable, of, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import { User } from "./user";
+import * as jwt_decode from "jwt-decode";
+import { JwtHelperService } from '@auth0/angular-jwt';
+import {Role} from "../models/utilisateur";
 
 @Injectable()
 export class AuthService implements OnInit{
@@ -10,12 +13,12 @@ export class AuthService implements OnInit{
   private currentUser: any;
   isLoggedIn: boolean = false;
   redirectUrl: string  | undefined;
+  private helper: JwtHelperService = new JwtHelperService();
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getCurrentUser();
-
   }
 
   login(email: string | undefined, password: string | undefined):Observable<any>{
@@ -46,17 +49,6 @@ export class AuthService implements OnInit{
        );
   };
 
-  updateEmail = ()=> {
-    const email = document.getElementById('updateEmail');
-    const adresse = document.getElementById('updateAddress');
-    console.log(this.currentUser)
-
-  }
-   updateAddress = ()=> {
-    const adresse = document.getElementById('updateAddress');
-    const email = document.getElementById('updateEmail');
-
-  }
 
    saveToken = (token: string) => { window.localStorage.setItem('token', token); }
    static getToken = () => {
@@ -71,5 +63,27 @@ export class AuthService implements OnInit{
     this.isLoggedIn = false;
   }
 
+  decodeToken(): string | null{
+    const token = window.localStorage.getItem('token');
+    let jwtToken = null;
+    if (!!token){
+      jwtToken = this.helper.decodeToken(token);
+    }
+    //console.log(jwtToken);
+    return jwtToken;
+  }
 
+  isAdmin(){
+    const decodedToken: any = this.decodeToken();
+    const roles = decodedToken.roles;
+    //console.log('isAdmin: ', roles.find((role: any)=> role.authority === "ADMIN"))
+    return roles.find((role: any)=> role.authority === "ADMIN");
+  }
+
+  isUser(){
+    const decodedToken: any = this.decodeToken();
+    const roles = decodedToken.roles;
+    //console.log('isUser: ', roles.find((role: any)=> role.authority === "USER"))
+    return roles.find((role: any)=> role.authority === "USER");
+  }
 }

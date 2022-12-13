@@ -41,7 +41,7 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
         Utilisateur utilisateur = UtilisateurDto.toUtilisateur(utilisateurDto);
         String password = bCryptPasswordEncoder.encode(utilisateurDto.getPassword());
         utilisateur.setPassword(password);
-        Role role = roleRepository.findByRoleName(utilisateurDto.getRoleName());
+        Role role = roleRepository.findByAuthority(utilisateurDto.getRoleName());
         List<Role> roles = Arrays.asList(role);
         utilisateur.setRoles(roles);
         utilisateur = utilisateurRepository.save(utilisateur);
@@ -51,7 +51,7 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
     @Override
     public Utilisateur ajouterRoleAUtilisateur(String roleName, int idUtilisateur) {
         Utilisateur utilisateur = utilisateurRepository.findById(idUtilisateur).orElse(null);
-        Role role = roleRepository.findByRoleName(roleName);
+        Role role = roleRepository.findByAuthority(roleName);
         if (utilisateur != null && role != null){
           utilisateur.getRoles().add(role);
           utilisateurRepository.save(utilisateur);
@@ -91,14 +91,14 @@ public class UtilisateurServiceImpl implements IUtilisateurService {
     public Utilisateur saveUser(Utilisateur utilisateur) {
         List<Role> roles = new ArrayList<>();
         utilisateur.getRoles().forEach(role -> {
-            Role role1 = roleRepository.findByRoleName(role.getRoleName());
+            Role role1 = roleRepository.findByAuthority(role.getAuthority());
             if(role1 != null){
                 roles.add(role1);
             }
         });
         utilisateur.setRoles(roles);
         if (utilisateur.getId() == 0){
-            utilisateur.setPassword(bCryptPasswordEncoder.encode("password"));
+            utilisateur.setPassword(bCryptPasswordEncoder.encode(utilisateur.getPassword()));
             return utilisateurRepository.save(utilisateur);
         } else {
             Optional<Utilisateur> optionalUtilisateur =

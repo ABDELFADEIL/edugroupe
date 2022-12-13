@@ -214,3 +214,16 @@ main .insinght div {
     }
     
 }
+
+label {
+    color: red;
+}
+
+input {
+    color: blue;
+}
+
+* {
+    font-size: 20px;
+    margin: 10px;
+}

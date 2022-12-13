@@ -11,13 +11,15 @@ import { AdminCommandeComponent } from './admin-commande/admin-commande.componen
 import { AdminMenuComponent } from './component/admin-menu/admin-menu.component';
 import { FormProduitComponent } from './form-produit/form-produit.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FormClientComponent } from './form-client/form-client.component';
+import {AuthGuard} from "../authentication/guard/auth.guard";
 
 
 const adminRoutes: Routes = [
-  { path: 'admin', component: AdminDashboardComponent },
-  { path: 'admin/produits', component: AdminProduitComponent },
-  { path: 'admin/clients', component: AdminClientComponent },
-  { path: 'admin/commandes', component: AdminCommandeComponent },
+  { path: 'admin', component: AdminDashboardComponent, canActivate: [AuthGuard] },
+  { path: 'admin/produits', component: AdminProduitComponent, canActivate: [AuthGuard] },
+  { path: 'admin/clients', component: AdminClientComponent, canActivate: [AuthGuard]  },
+  { path: 'admin/commandes', component: AdminCommandeComponent, canActivate: [AuthGuard]  },
 ]
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ const adminRoutes: Routes = [
     AdminClientComponent,
     AdminCommandeComponent,
     AdminMenuComponent,
-    FormProduitComponent
+    FormProduitComponent,
+    FormClientComponent
   ],
   imports: [
     CommonModule,

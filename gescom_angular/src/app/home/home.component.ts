@@ -12,6 +12,9 @@ export class HomeComponent implements OnInit{
   private produits: Produit[] | undefined;
   sliderProduits: Produit[] | undefined;
   newProduits: Produit[] | undefined;
+  private currentPage: number = 0;
+  private size: number = 100;
+  private keyword: string = '';
 
   constructor(private produitService: ProduitService) {
   }
@@ -21,7 +24,7 @@ export class HomeComponent implements OnInit{
   }
 
   getProduct(){
-    this.produitService.getProduits().subscribe(
+    this.produitService.getProductsByKeyWordPagination({page: this.currentPage, size: this.size, keyword: this.keyword}).subscribe(
       (response)=> {
         this.produits = response.content;
         this.sliderProduits = this.produits?.slice(0, 4);

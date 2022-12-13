@@ -1,29 +1,19 @@
-import {Component, EventEmitter, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnChanges,
+  OnInit, Output, SimpleChanges} from '@angular/core';
 import {ProduitService} from "../../produits/produit.service";
 import {Produit} from "../../produits/produit";
-import {faArrowAltCircleUp, faPlus} from "@fortawesome/free-solid-svg-icons";
-import { faChevronDown, faChevronRight, faChevronLeft, faTrashAlt, faSyncAlt } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faChevronLeft, faChevronRight, faPlus, faSyncAlt,
+  faTrashAlt} from "@fortawesome/free-solid-svg-icons";
 import {Categorie} from "../../produits/categorie";
 import {CategorieService} from "../../produits/categorie.service";
-import {
-  debounceTime,
-  distinctUntilChanged,
-  Observable,
-  Subject,
-  switchMap,
-  tap,
-  pipe,
-  mergeMap,
-  concatMap,
-  AsyncSubject, of, BehaviorSubject, map
-} from "rxjs";
-import {AnonymousSubject} from "rxjs/internal/Subject";
+import {BehaviorSubject, map, Observable, of, shareReplay, switchMap, tap} from "rxjs";
 import {ApiResponse} from "../../models/apiResponse";
 
 @Component({
   selector: 'app-admin-produit',
   templateUrl: './admin-produit.component.html',
-  styleUrls: ['./admin-produit.component.css']
+  styleUrls: ['./admin-produit.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminProduitComponent implements OnInit, OnChanges{
   faPlus = faPlus;
@@ -32,7 +22,6 @@ export class AdminProduitComponent implements OnInit, OnChanges{
   faChevronRight = faChevronRight;
   faTrashAlt = faTrashAlt;
   faSync = faSyncAlt;
-  produits?: Produit [];
   currentPage: number = 0;
   size: number = 10;
   totalPages: number [] = [];
@@ -51,7 +40,7 @@ export class AdminProduitComponent implements OnInit, OnChanges{
 
   ngOnInit(): void {
     this.produits$  = this.wordSubject.pipe(
-      debounceTime(1000),
+      //debounceTime(500),
       //distinctUntilChanged(),
       tap( word=> console.log(word)),
       switchMap((word, index)=> {
@@ -64,7 +53,8 @@ export class AdminProduitComponent implements OnInit, OnChanges{
         this.totalElements = response.totalElements;
         this.totalPages = Array.from(Array(response.totalPages).keys());
         return response
-      })
+      }),
+      shareReplay()
     );
 
     console.log(this.produits$);
@@ -72,9 +62,8 @@ export class AdminProduitComponent implements OnInit, OnChanges{
   }
 
   getProduitsObservable() :Observable<ApiResponse<Produit>>{
-    console.log(this.currentPage);
-    console.log(this.size);
-    return this.produitService.getProduitsByKeyWord({page: this.currentPage, size: this.size}, this.keyword);
+    return this.produitService
+      .getProductsByKeyWordPagination({page: this.currentPage, size: this.size, keyword: this.keyword});
   }
 
   changePageSize() {
@@ -83,10 +72,6 @@ export class AdminProduitComponent implements OnInit, OnChanges{
     this.getProduitsObservable();
   }
   changePage(page:number) {
-    console.log(this.size);
-    console.log(this.currentPage + page >= 0 && this.currentPage + page < this.totalPages.length);
-    console.log(this.currentPage);
-    console.log(this.totalPages)
     if (this.currentPage + page >= 0 && this.currentPage + page < this.totalPages.length){
       this.currentPage += page;
       //this.getInitialProducts();
@@ -95,16 +80,11 @@ export class AdminProduitComponent implements OnInit, OnChanges{
     }
   }
 
-  openFormProduit(produit:Produit | undefined){
-    this.updateAdd = true;
-    this.produit = produit;
-  }
-
   getAllCategories(){
     this.categorieService.getCategories().subscribe(
       (response)=> {
         this.categories = response;
-        console.log(this.categories);
+        //console.log(this.categories);
       }
     )
   }
@@ -116,17 +96,43 @@ export class AdminProduitComponent implements OnInit, OnChanges{
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-  }
-  setUpdateAdd(updateAdd: boolean){
-    this.updateAdd = updateAdd;
-    console.log(this.updateAdd);
+    //console.log(changes);
   }
 
   searchProduits(searchWord: string) {
-    console.log(searchWord);
     this.wordSubject.next(searchWord);
-    console.log(this.wordSubject);
-    //this.currentPage = 0;
+  }
+  deleteProduct(productId: number){
+    this.produitService.deleteProduct(productId)
+      .subscribe((response)=> {
+        console.log('delete response: ', response);
+      })
+  }
+
+
+   toggleModal(produit: Produit | undefined) {
+    this.produit = produit;
+     const modalId = "modal";
+     const modal = <HTMLElement>document.getElementById(modalId);
+
+    if(getComputedStyle(modal).display==="flex") { // alternatively: if(modal.classList.contains("modal-show"))
+      modal.classList.add("modal-hide");
+      setTimeout(() => {
+        document.body.style.overflow = "initial"; // Optional: in order to enable/disable page scrolling while modal is hidden/shown - in this case: "initial" <=> "visible"
+        modal.classList.remove("modal-show", "modal-hide");
+        modal.style.display = "none";
+      }, 200);
+    }
+    else {
+      document.body.style.overflow = "hidden"; // Optional: in order to enable/disable page scrolling while modal is hidden/shown
+      modal.style.display = "flex";
+      modal.classList.add("modal-show");
+    }
+  }
+
+  closeModal(event: MouseEvent) {
+    if ((event.target as HTMLElement).classList.contains("modal")) {
+      this.toggleModal(undefined);
+    }
   }
 }
