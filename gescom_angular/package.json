@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --base-href=/asmar --output-path=asmar --aot",
+    "build:war": "gulp war",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -24,6 +25,9 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "gulp": "^4.0.2",
+    "gulp-war": "^0.1.4",
+    "gulp-zip": "^5.1.0",
     "jwt-decode": "^3.1.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
