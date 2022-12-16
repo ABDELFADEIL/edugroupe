@@ -11,4 +11,6 @@ gulp.task('war', function (callback) {
     .pipe(zip('asmar.war'))
     .pipe(gulp.dest("./"));
   callback();
+
 });
+
